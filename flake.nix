@@ -3,38 +3,37 @@
 	
 	inputs = {
 		nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
-		hyprland.url = "github:hyprwm/Hyprland";
 
 		home-manager = {
 			url = "github:nix-community/home-manager";
 			inputs.nixpkgs.follows = "nixpkgs";
 		};
+
+		hyprland.url = "github:hyprwm/Hyprland";
 	};
 
-	outputs = { self, nixpkgs, hyprland, home-manager, ... }@inputs:
+	outputs = { self, nixpkgs, home-manager, hyprland, ... }@inputs:
 		let
+			lib = nixpkgs.lib;
 			system = "x86_64-linux";
 			pkgs = nixpkgs.legacyPackages.${system};
 		in
 		{
 			nixosConfigurations = {
-				laptop = nixpkgs.lib.nixosSystem {
+				laptop = lib.nixosSystem {
 					inherit system;
 					specialArgs = { inherit inputs; };
 					modules = [
 						./hosts/laptop/configuration.nix
-						home-manager.nixosModules.home-manager
-						{
-							home-manager = {
-								useGlobalPkgs = true;
-								useUserPackages = true;
-								backupFileExtension = "backup";
-								users.alvinceleste = import ./home/alvinceleste/home.nix;
-								extraSpecialArgs = { inherit inputs; };
-							};
-						}
 					];
 				};
+			};
+
+			homeConfigurations = {
+				alvinceleste = home-manager.lib.homeManagerConfiguration {
+					inherit pkgs;
+					modules = [ ./hosts/laptop/home.nix ];
+				};
+			};	
 		};
-	};
 }
