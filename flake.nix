@@ -32,7 +32,7 @@
 			homeConfigurations = {
 				alvinceleste = home-manager.lib.homeManagerConfiguration {
 					inherit pkgs;
-					modules = [ ./hosts/laptop/home.nix ];
+					modules = [ ./home/alvinceleste/home.nix ];
 				};
 			};	
 		};
