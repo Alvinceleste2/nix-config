@@ -4,7 +4,6 @@
   imports =
     [ 
       ./hardware-configuration.nix
-      ./home.nix
 
       ../../modules/hyprland.nix
       ../../modules/sddm.nix
@@ -44,9 +43,6 @@
   users.users.alvinceleste = {
     isNormalUser = true;
     extraGroups = [ "wheel" ];
-    packages = with pkgs; [
-    	# tree
-    ];
   };
 
   users.defaultUserShell = pkgs.zsh;
