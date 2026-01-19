@@ -1,20 +1,12 @@
 { config, pkgs, inputs, ... }:
 
 {
-  programs.hyprland = {
-    enable = true;
-    package = inputs.hyprland.packages.${pkgs.system}.hyprland;
-    xwayland.enable = true;
-  };
+  programs.kitty.enable = true;
 
- #xdg.portal = {
- #  enable = true;
- #  extraPortals = with pkgs; [
- #    xdg-desktop-portal-gtk
- #    xdg-desktop-portal-hyprland
- #  ];
- #  config.common.default = "*";
- #};
+  programs.hyprland = {
+  	enable = true;
+	package = inputs.hyprland.packages."${pkgs.system}".hyprland;
+  };
 
   environment.systemPackages = with pkgs; [
   ];
