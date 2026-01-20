@@ -45,4 +45,9 @@
 	home.file.".config/fuzzel/".source = config.lib.file.mkOutOfStoreSymlink /home/alvinceleste/nix-config/dotfiles/fuzzel/.config/kitty;
 
 	home.file.".config/nvim".source = config.lib.file.mkOutOfStoreSymlink /home/alvinceleste/nix-config/dotfiles/nvim/.config/nvim;
+
+  # PACKAGES #
+  home.packages = [
+    pkgs.kitty
+  ];
 }

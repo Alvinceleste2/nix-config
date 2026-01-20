@@ -10,7 +10,7 @@
       ../../core/settings.nix
       ../../core/packages.nix
 
-      ../home/alvinceleste/alvinceleste.nix
+      ../../home/alvinceleste/alvinceleste.nix
 
       ../../modules/hyprland.nix
       ../../modules/sddm.nix
