@@ -5,6 +5,7 @@
     vim
     neovim
     home-manager
+    gcc
   ];
 
   programs.zsh.enable = true;

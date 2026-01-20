@@ -15,6 +15,10 @@
 			init.defaultBranch = "main";
 			pull.rebase = true;
 		};
+
+    settings.core = {
+      editor = "nvim";
+    };
 	};
 
 	programs.zsh = {
@@ -47,7 +51,7 @@
 	home.file.".config/nvim".source = config.lib.file.mkOutOfStoreSymlink /home/alvinceleste/nix-config/dotfiles/nvim/.config/nvim;
 
   # PACKAGES #
-  home.packages = [
-    pkgs.kitty
+  home.packages = with pkgs; [
+    kitty
   ];
 }
