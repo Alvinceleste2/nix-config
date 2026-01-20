@@ -39,8 +39,10 @@
 
   # CUSTOM DOTFILES #
 
-	home.file.".config/hypr/".source = config.lib.file.mkOutOfStoreSymlink /home/alvinceleste/nix-config/hyprland-laptop/.config/hypr;
-	home.file.".config/kitty/".source = config.lib.file.mkOutOfStoreSymlink /home/alvinceleste/nix-config/kitty/.config/kitty;
+	home.file.".config/hypr/".source = config.lib.file.mkOutOfStoreSymlink /home/alvinceleste/nix-config/dotfiles/hyprland-laptop/.config/hypr;
+	home.file.".config/waybar/".source = config.lib.file.mkOutOfStoreSymlink /home/alvinceleste/nix-config/dotfiles/waybar-laptop/.config/waybar;
+	home.file.".config/kitty/".source = config.lib.file.mkOutOfStoreSymlink /home/alvinceleste/nix-config/dotfiles/kitty/.config/kitty;
+	home.file.".config/fuzzel/".source = config.lib.file.mkOutOfStoreSymlink /home/alvinceleste/nix-config/dotfiles/fuzzel/.config/kitty;
 
-	home.file.".config/nvim".source = config.lib.file.mkOutOfStoreSymlink /home/alvinceleste/nix-config/nvim/.config/nvim;
+	home.file.".config/nvim".source = config.lib.file.mkOutOfStoreSymlink /home/alvinceleste/nix-config/dotfiles/nvim/.config/nvim;
 }
