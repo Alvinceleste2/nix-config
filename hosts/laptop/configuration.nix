@@ -42,7 +42,7 @@
 
   users.users.alvinceleste = {
     isNormalUser = true;
-    extraGroups = [ "wheel" ];
+    extraGroups = [ "wheel" "users" ];
   };
 
   users.defaultUserShell = pkgs.zsh;

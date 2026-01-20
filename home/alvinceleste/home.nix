@@ -6,6 +6,10 @@
 	home.stateVersion = "25.11";
 
 	imports = [
-		./config
+		./config/kitty.nix
+		./config/hyprland.nix
+		./config/zsh.nix
+		./config/neovim.nix
+		./config/git.nix
 	];
 }

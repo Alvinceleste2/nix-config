@@ -6,7 +6,7 @@
 
 		font = {
 			name = "Fantasque Sans Mono";
-			size = 11;
+			size = 12;
 		};
 	};
 }
