@@ -23,6 +23,7 @@
     firefox
     gnome-calculator
     kdePackages.dolphin
+    fuzzel
 
     # technical stuff
     pipewire
