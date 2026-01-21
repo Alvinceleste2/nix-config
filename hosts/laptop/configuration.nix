@@ -13,6 +13,7 @@
       ../../users/alvinceleste.nix
 
       ../../modules/hyprland.nix
+      ../../modules/neovim.nix
       ../../modules/sddm.nix
     ];
 

@@ -11,6 +11,7 @@
     # desktop environment
     bibata-cursors
     hyprlock
+    hypridle
     hyprpaper
     hyprpicker
     brightnessctl
