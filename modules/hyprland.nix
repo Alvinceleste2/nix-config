@@ -17,6 +17,7 @@
     brightnessctl
     waybar
     cliphist
+    swaync
 
     # programs
     kitty
