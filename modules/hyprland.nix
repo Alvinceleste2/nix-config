@@ -6,12 +6,25 @@
 		#package = inputs.hyprland.packages."${pkgs.system}".hyprland; };
 	};
 
-  programs.waybar.enable = true;
-
-  programs.hyprlock.enable = true;
 
   environment.systemPackages = with pkgs; [
+    # desktop environment
     bibata-cursors
+    hyprlock
     hyprpaper
+    hyprpicker
+    brightnessctl
+    waybar
+    cliphist
+
+    # programs
+    kitty
+    firefox
+    gnome-calculator
+    kdePackages.dolphin
+
+    # technical stuff
+    pipewire
+    wireplumber
   ];
 }
