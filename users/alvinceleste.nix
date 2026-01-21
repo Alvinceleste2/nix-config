@@ -5,6 +5,4 @@
     isNormalUser = true;
     extraGroups = [ "wheel" "users" ];
   };
-
-  users.defaultUserShell = pkgs.zsh;
 }

@@ -10,13 +10,17 @@
       ../../core/settings.nix
       ../../core/packages.nix
 
-      ../../home/alvinceleste/alvinceleste.nix
+      ../../users/alvinceleste.nix
 
       ../../modules/hyprland.nix
       ../../modules/sddm.nix
     ];
 
-  networking.hostName = "nixos";
+  networking.hostName = "laptop";
+
+  environment.variables = {
+    HOSTNAME = config.networking.hostName;
+  };
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 

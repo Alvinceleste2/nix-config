@@ -4,7 +4,7 @@
   environment.systemPackages = with pkgs; [
     vim
     neovim
-    home-manager
+    stow
     gcc
   ];
 
