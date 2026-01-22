@@ -8,6 +8,6 @@
   fonts.fontconfig.defaultFonts = {
     sansSerif = [ "FantasqueSansM Nerd Font"];
     serif = [ "FantasqueSansM Nerd Font"];
-    monospace = [ "FantasqueSansM Nerd Font"];
+    monospace = [ "FantasqueSansM Nerd Font Mono"];
   };
 }
