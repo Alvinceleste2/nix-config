@@ -7,6 +7,12 @@
 		#package = inputs.hyprland.packages."${pkgs.system}".hyprland; };
 	};
 
+  services.pipewire = {
+     enable = true;
+     alsa.enable = true;
+     pulse.enable = true;
+  };
+
   environment.systemPackages = with pkgs; [
     # desktop environment
     bibata-cursors
@@ -14,7 +20,6 @@
     hypridle
     hyprpaper
     hyprpicker
-    brightnessctl
     waybar
     cliphist
     wl-clipboard
@@ -35,5 +40,7 @@
     # technical stuff
     pipewire
     wireplumber
+    pamixer
+    brightnessctl
   ];
 }
