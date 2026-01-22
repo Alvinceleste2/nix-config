@@ -14,7 +14,7 @@
 
       ../../modules/hyprland.nix
       ../../modules/neovim.nix
-      ../../modules/sddm.nix
+      ../../modules/display-manager.nix
     ];
 
   networking.hostName = "laptop";
