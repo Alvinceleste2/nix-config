@@ -17,7 +17,13 @@
     brightnessctl
     waybar
     cliphist
-    swaync
+    wl-clipboard
+    grim
+    slurp
+    dunst
+    rose-pine-icon-theme
+    rose-pine-gtk-theme
+    # nwg-look
 
     # programs
     kitty
