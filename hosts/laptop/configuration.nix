@@ -9,6 +9,7 @@
       ../../core/fonts.nix
       ../../core/settings.nix
       ../../core/packages.nix
+      ../../core/network.nix
 
       ../../users/alvinceleste.nix
 

@@ -3,6 +3,6 @@
 {
   users.users.alvinceleste = {
     isNormalUser = true;
-    extraGroups = [ "wheel" "users" ];
+    extraGroups = [ "wheel" "users" "networkmanager" ];
   };
 }

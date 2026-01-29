@@ -4,6 +4,8 @@
   environment.systemPackages = with pkgs; [
     vim
     stow
+    htop
+    neofetch
   ];
 
   programs.zsh.enable = true;
