@@ -10,6 +10,7 @@
       ../../core/settings.nix
       ../../core/packages.nix
       ../../core/network.nix
+      ../../core/dev.nix
 
       ../../users/alvinceleste.nix
 
