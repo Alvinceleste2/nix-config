@@ -5,5 +5,6 @@
     python314
 
     postgresql
+    postgresql.pg_config
   ];
 }
