@@ -6,5 +6,7 @@
 
     postgresql
     postgresql.pg_config
+
+    virtualbox
   ];
 }
