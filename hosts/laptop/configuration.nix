@@ -11,6 +11,7 @@
       ../../core/packages.nix
       ../../core/network.nix
       ../../core/dev.nix
+      ../../core/apps.nix
 
       ../../users/alvinceleste.nix
 
