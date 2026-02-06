@@ -6,6 +6,7 @@
     stow
     htop
     neofetch
+    curl
   ];
 
   programs.zsh.enable = true;
