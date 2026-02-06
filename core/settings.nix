@@ -6,4 +6,6 @@
   console.keyMap = "es";
 
   users.defaultUserShell = pkgs.zsh;
+
+  nixpkgs.config.allowUnfree = true;
 }
