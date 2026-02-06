@@ -2,6 +2,7 @@
 
 {
   environment.systemPackages = with pkgs; [
+    typst
     python314
 
     postgresql
