@@ -7,8 +7,6 @@
     postgresql
     postgresql.pg_config
 
-    virtualbox
-
     typst
     tinymist
     websocat

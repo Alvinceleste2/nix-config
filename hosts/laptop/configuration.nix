@@ -12,6 +12,7 @@
       ../../core/network.nix
       ../../core/dev.nix
       ../../core/apps.nix
+      ../../core/virtualization.nix
 
       ../../users/alvinceleste.nix
 
