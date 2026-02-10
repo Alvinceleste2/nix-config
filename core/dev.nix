@@ -11,4 +11,8 @@
     tinymist
     websocat
   ];
+
+  services.postgresql = {
+    enable = true;
+  };
 }
