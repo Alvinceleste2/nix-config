@@ -2,7 +2,7 @@
 
 {
   environment.systemPackages = with pkgs; [
-    python314
+    python312
 
     postgresql
     postgresql.pg_config
