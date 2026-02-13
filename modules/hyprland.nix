@@ -25,6 +25,7 @@
     wl-clipboard
     grim
     slurp
+    jq
     dunst
     rose-pine-icon-theme
     rose-pine-gtk-theme
