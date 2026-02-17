@@ -7,6 +7,7 @@
     htop
     neofetch
     curl
+    zip
   ];
 
   programs.zsh.enable = true;
