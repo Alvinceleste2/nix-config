@@ -8,6 +8,7 @@
     neofetch
     curl
     zip
+    unzip
   ];
 
   programs.zsh.enable = true;
