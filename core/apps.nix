@@ -5,5 +5,6 @@
     spotify
     signal-desktop
     discord
+    pencil
   ];
 }
