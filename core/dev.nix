@@ -10,6 +10,8 @@
     typst
     tinymist
     websocat
+
+    nodejs_24
   ];
 
   services.postgresql = {
