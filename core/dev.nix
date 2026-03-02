@@ -11,7 +11,9 @@
     tinymist
     websocat
 
+    # PSI
     nodejs_24
+    cypress
   ];
 
   services.postgresql = {
