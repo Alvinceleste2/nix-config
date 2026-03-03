@@ -2,6 +2,7 @@
 
 {
   environment.systemPackages = with pkgs; [
+    lazygit
     python312
     dos2unix
 
