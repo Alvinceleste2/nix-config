@@ -16,6 +16,7 @@
     # PSI
     nodejs_24
     cypress
+    dbeaver-bin
   ];
 
   services.postgresql = {
