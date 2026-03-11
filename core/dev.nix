@@ -5,6 +5,7 @@
     lazygit
     python312
     dos2unix
+    gnumake
 
     postgresql
     postgresql.pg_config
