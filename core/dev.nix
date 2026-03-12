@@ -14,10 +14,12 @@
     tinymist
     websocat
 
-    # PSI
+    # PSI & SI2
     nodejs_24
     cypress
     dbeaver-bin
+
+    jmeter
   ];
 
   services.postgresql = {
