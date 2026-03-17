@@ -6,5 +6,7 @@
     signal-desktop
     discord
     pencil
+
+    jellyfin
   ];
 }
