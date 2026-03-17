@@ -7,6 +7,6 @@
     discord
     pencil
 
-    jellyfin
+    jellyfin-desktop
   ];
 }
