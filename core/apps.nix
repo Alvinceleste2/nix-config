@@ -6,6 +6,7 @@
     signal-desktop
     discord
     pencil
+    libreoffice
 
     jellyfin-desktop
   ];
