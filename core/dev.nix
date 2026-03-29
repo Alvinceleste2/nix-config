@@ -20,6 +20,7 @@
     dbeaver-bin
 
     jmeter
+    nmon
   ];
 
   services.postgresql = {
