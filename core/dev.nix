@@ -21,6 +21,8 @@
 
     jmeter
     nmon
+
+    jdk25_headless
   ];
 
   services.postgresql = {
