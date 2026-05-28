@@ -18,7 +18,12 @@
     ../../modules/display-manager.nix
   ];
 
-  modules.core.enable = true;
+  modules = {
+    core.enable = true;
+    services = {
+      tailscale.enable = true;
+    };
+  };
 
   networking.hostName = "laptop";
 

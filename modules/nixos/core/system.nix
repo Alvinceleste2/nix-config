@@ -14,9 +14,5 @@ in
   config = lib.mkIf cfg.enable {
     time.timeZone = "Europe/Madrid";
     console.keyMap = "es";
-
-    environment.systemPackages = with pkgs; [
-      cowsay
-    ];
   };
 }
