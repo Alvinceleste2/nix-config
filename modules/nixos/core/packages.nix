@@ -20,6 +20,7 @@ in
       zip
       unzip
       stow
+      tree
     ];
 
     nix.settings.experimental-features = [

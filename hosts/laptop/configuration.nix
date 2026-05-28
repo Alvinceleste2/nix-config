@@ -26,13 +26,7 @@
     HOSTNAME = config.networking.hostName;
   };
 
-  nix.settings.experimental-features = [
-    "nix-command"
-    "flakes"
-  ];
-
   programs.firefox.enable = true;
 
   system.stateVersion = "25.11";
-
 }

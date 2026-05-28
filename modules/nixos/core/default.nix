@@ -11,6 +11,8 @@ in
 {
   imports = [
     ./boot.nix
+
+    ./garbage-collection.nix
     ./system.nix
     ./packages.nix
     ./network.nix
@@ -20,6 +22,8 @@ in
 
   config = lib.mkIf cfg.enable {
     modules.core.boot.enable = lib.mkDefault true;
+
+    modules.core.garbage-collection.enable = lib.mkDefault true;
     modules.core.system.enable = lib.mkDefault true;
     modules.core.packages.enable = lib.mkDefault true;
     modules.core.network.enable = lib.mkDefault true;
