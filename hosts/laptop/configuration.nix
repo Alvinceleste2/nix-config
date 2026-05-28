@@ -1,25 +1,25 @@
 { config, pkgs, ... }:
 
 {
-  imports =
-    [ 
-      ./hardware-configuration.nix
+  imports = [
+    ./hardware-configuration.nix
+    ./modules
 
-      ../../core/boot.nix
-      ../../core/fonts.nix
-      ../../core/settings.nix
-      ../../core/packages.nix
-      ../../core/network.nix
-      ../../core/dev.nix
-      ../../core/apps.nix
-      ../../core/virtualization.nix
+    ../../core/boot.nix
+    ../../core/fonts.nix
+    ../../core/settings.nix
+    ../../core/packages.nix
+    ../../core/network.nix
+    ../../core/dev.nix
+    ../../core/apps.nix
+    ../../core/virtualization.nix
 
-      ../../users/alvinceleste.nix
+    ../../users/alvinceleste.nix
 
-      ../../modules/hyprland.nix
-      ../../modules/neovim.nix
-      ../../modules/display-manager.nix
-    ];
+    ../../modules/hyprland.nix
+    ../../modules/neovim.nix
+    ../../modules/display-manager.nix
+  ];
 
   networking.hostName = "laptop";
 
@@ -27,11 +27,13 @@
     HOSTNAME = config.networking.hostName;
   };
 
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
+  nix.settings.experimental-features = [
+    "nix-command"
+    "flakes"
+  ];
 
   programs.firefox.enable = true;
 
   system.stateVersion = "25.11";
 
 }
-

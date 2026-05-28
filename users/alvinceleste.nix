@@ -1,7 +1,7 @@
 { config, pkgs, ... }:
 
 {
-  nix.settings.trusted-users = [ "alvinceleste" ]
+  nix.settings.trusted-users = [ "alvinceleste" ];
 
   users = {
     users = {
@@ -21,7 +21,7 @@
     groups = {
       alvinceleste = {
         gid = 1000;
-      }
+      };
     };
   };
 
