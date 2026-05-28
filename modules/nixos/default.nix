@@ -2,6 +2,6 @@
 
 {
   imports = [
-    ./nixos
+    ./core
   ];
 }

@@ -5,11 +5,8 @@
     ./hardware-configuration.nix
     ../../modules
 
-    ../../core/boot.nix
     ../../core/fonts.nix
-    ../../core/settings.nix
     ../../core/packages.nix
-    ../../core/network.nix
     ../../core/dev.nix
     ../../core/apps.nix
     ../../core/virtualization.nix
@@ -20,6 +17,8 @@
     ../../modules/neovim.nix
     ../../modules/display-manager.nix
   ];
+
+  modules.core.enable = true;
 
   networking.hostName = "laptop";
 

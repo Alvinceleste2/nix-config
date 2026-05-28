@@ -10,6 +10,7 @@ let
 in
 {
   imports = [
+    ./boot.nix
     ./system.nix
     ./packages.nix
     ./network.nix
@@ -18,6 +19,7 @@ in
   options.modules.core.enable = lib.mkEnableOption "enables core";
 
   config = lib.mkIf cfg.enable {
+    modules.core.boot.enable = lib.mkDefault true;
     modules.core.system.enable = lib.mkDefault true;
     modules.core.packages.enable = lib.mkDefault true;
     modules.core.network.enable = lib.mkDefault true;

@@ -13,5 +13,14 @@ in
 
   config = lib.mkIf cfg.enable {
     networking.networkmanager.enable = true;
+
+    services.tailscale.enable = true;
+
+    # needed for eduroam
+    environment.systemPackages = with pkgs; [
+      networkmanagerapplet
+    ];
+    security.polkit.enable = true;
+    services.gnome.gnome-keyring.enable = true;
   };
 }

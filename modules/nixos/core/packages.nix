@@ -19,6 +19,7 @@ in
       htop
       zip
       unzip
+      stow
     ];
 
     nix.settings.experimental-features = [
