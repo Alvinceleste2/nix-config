@@ -27,5 +27,13 @@ in
 
       jellyfin-desktop
     ];
+
+    environment.sessionVariables = {
+      TERMINAL = "kitty";
+      BROWSER = "firefox";
+      LAUNCHER = "fuzzel";
+      FILEMANAGER = "dolphin";
+      CALCULATOR = "calculator";
+    };
   };
 }

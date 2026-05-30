@@ -14,7 +14,6 @@ in
   config = lib.mkIf cfg.enable {
     environment.systemPackages = with pkgs; [
       vim
-      neovim
       git
       curl
       htop
@@ -24,6 +23,8 @@ in
       tree
       neofetch
     ];
+
+    programs.neovim.enable = true;
 
     nix.settings.experimental-features = [
       "nix-command"

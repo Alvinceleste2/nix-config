@@ -5,12 +5,7 @@
     ./hardware-configuration.nix
     ../../modules
 
-    ../../core/packages.nix
-    ../../core/dev.nix
-
     ../../users/alvinceleste.nix
-
-    ../../modules/neovim.nix
   ];
 
   modules = {
@@ -18,6 +13,9 @@
     graphics = {
       enable = true;
       virtualization.enable = false;
+    };
+    profiles = {
+      dev.enable = true;
     };
     services = {
       tailscale.enable = true;
@@ -30,7 +28,7 @@
     HOSTNAME = config.networking.hostName;
   };
 
-  programs.firefox.enable = true;
+  programs.nix-ld.enable = true;
 
   system.stateVersion = "25.11";
 }
