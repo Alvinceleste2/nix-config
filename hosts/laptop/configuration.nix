@@ -5,21 +5,20 @@
     ./hardware-configuration.nix
     ../../modules
 
-    ../../core/fonts.nix
     ../../core/packages.nix
     ../../core/dev.nix
-    ../../core/apps.nix
-    ../../core/virtualization.nix
 
     ../../users/alvinceleste.nix
 
-    ../../modules/hyprland.nix
     ../../modules/neovim.nix
-    ../../modules/display-manager.nix
   ];
 
   modules = {
     core.enable = true;
+    graphics = {
+      enable = true;
+      virtualization.enable = false;
+    };
     services = {
       tailscale.enable = true;
     };

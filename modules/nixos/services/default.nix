@@ -17,7 +17,9 @@ in
   options.modules.services.enable = lib.mkEnableOption "enables services";
 
   config = lib.mkIf cfg.enable {
+    modules.services = {
 
-    modules.services.tailscale.enable = lib.mkDefault true;
+      tailscale.enable = lib.mkDefault true;
+    };
   };
 }

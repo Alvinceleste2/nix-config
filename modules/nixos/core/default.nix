@@ -21,11 +21,13 @@ in
   options.modules.core.enable = lib.mkEnableOption "enables core";
 
   config = lib.mkIf cfg.enable {
-    modules.core.boot.enable = lib.mkDefault true;
+    modules.core = {
+      boot.enable = lib.mkDefault true;
 
-    modules.core.garbage-collection.enable = lib.mkDefault true;
-    modules.core.system.enable = lib.mkDefault true;
-    modules.core.packages.enable = lib.mkDefault true;
-    modules.core.network.enable = lib.mkDefault true;
+      garbage-collection.enable = lib.mkDefault true;
+      system.enable = lib.mkDefault true;
+      packages.enable = lib.mkDefault true;
+      network.enable = lib.mkDefault true;
+    };
   };
 }

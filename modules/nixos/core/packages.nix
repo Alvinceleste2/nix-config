@@ -14,6 +14,7 @@ in
   config = lib.mkIf cfg.enable {
     environment.systemPackages = with pkgs; [
       vim
+      neovim
       git
       curl
       htop
@@ -21,6 +22,7 @@ in
       unzip
       stow
       tree
+      neofetch
     ];
 
     nix.settings.experimental-features = [

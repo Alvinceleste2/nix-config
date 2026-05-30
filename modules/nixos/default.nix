@@ -3,7 +3,7 @@
 {
   imports = [
     ./core
-
+    ./graphics
     ./services
   ];
 }
