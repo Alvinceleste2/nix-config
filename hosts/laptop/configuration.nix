@@ -18,12 +18,10 @@
     };
 
     graphics = {
-      apps.enable = true;
+      desktop-environments.hyprland.enable = true;
       audio.enable = true;
       display-manager.enable = true;
       fonts.enable = true;
-      hyprland.enable = true;
-      # virtualization.enable = false;
     };
 
     profiles = {
