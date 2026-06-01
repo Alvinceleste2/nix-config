@@ -20,7 +20,10 @@
     graphics = {
       desktop-environments.hyprland.enable = true;
       audio.enable = true;
-      display-manager.enable = true;
+      display-manager = {
+        enable = true;
+        dm = "greetd";
+      };
       fonts.enable = true;
     };
 
