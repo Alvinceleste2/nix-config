@@ -9,14 +9,27 @@
   ];
 
   modules = {
-    core.enable = true;
-    graphics = {
-      enable = true;
-      virtualization.enable = false;
+    core = {
+      boot.enable = true;
+      garbage-collection.enable = true;
+      network.enable = true;
+      packages.enable = true;
+      system.enable = true;
     };
+
+    graphics = {
+      apps.enable = true;
+      audio.enable = true;
+      display-manager.enable = true;
+      fonts.enable = true;
+      hyprland.enable = true;
+      # virtualization.enable = false;
+    };
+
     profiles = {
       dev.enable = true;
     };
+
     services = {
       tailscale.enable = true;
     };
