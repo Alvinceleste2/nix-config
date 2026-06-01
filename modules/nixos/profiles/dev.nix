@@ -2,14 +2,18 @@
   config,
   pkgs,
   lib,
+  dir,
+  desc,
   ...
 }:
 
 let
-  cfg = config.modules.profiles.dev;
+  cfg = lib.attrByPath dir { } config;
 in
 {
-  options.modules.profiles.dev.enable = lib.mkEnableOption "enables profiles/dev";
+  options = lib.setAttrByPath dir {
+    enable = lib.mkEnableOption desc;
+  };
 
   config = lib.mkIf cfg.enable {
     environment.systemPackages = with pkgs; [

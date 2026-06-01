@@ -2,14 +2,18 @@
   config,
   pkgs,
   lib,
+  dir,
+  desc,
   ...
 }:
 
 let
-  cfg = config.modules.core.packages;
+  cfg = lib.attrByPath dir { } config;
 in
 {
-  options.modules.core.packages.enable = lib.mkEnableOption "enables core/packages";
+  options = lib.setAttrByPath dir {
+    enable = lib.mkEnableOption desc;
+  };
 
   config = lib.mkIf cfg.enable {
     environment.systemPackages = with pkgs; [

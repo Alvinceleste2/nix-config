@@ -2,14 +2,18 @@
   config,
   pkgs,
   lib,
+  dir,
+  desc,
   ...
 }:
 
 let
-  cfg = config.modules.graphics.audio;
+  cfg = lib.attrByPath dir { } config;
 in
 {
-  options.modules.graphics.audio.enable = lib.mkEnableOption "enables graphics/audio";
+  options = lib.setAttrByPath dir {
+    enable = lib.mkEnableOption desc;
+  };
 
   config = lib.mkIf cfg.enable {
     services.pipewire = {

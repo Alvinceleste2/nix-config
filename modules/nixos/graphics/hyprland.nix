@@ -2,14 +2,18 @@
   config,
   pkgs,
   lib,
+  dir,
+  desc,
   ...
 }:
 
 let
-  cfg = config.modules.graphics.hyprland;
+  cfg = lib.attrByPath dir { } config;
 in
 {
-  options.modules.graphics.hyprland.enable = lib.mkEnableOption "enables graphics/hyprland";
+  options = lib.setAttrByPath dir {
+    enable = lib.mkEnableOption desc;
+  };
 
   config = lib.mkIf cfg.enable {
     programs.hyprland = {

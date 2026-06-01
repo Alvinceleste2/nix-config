@@ -2,14 +2,18 @@
   config,
   pkgs,
   lib,
+  dir,
+  desc,
   ...
 }:
 
 let
-  cfg = config.modules.core.system;
+  cfg = lib.attrByPath dir { } config;
 in
 {
-  options.modules.core.system.enable = lib.mkEnableOption "enables core/system";
+  options = lib.setAttrByPath dir {
+    enable = lib.mkEnableOption desc;
+  };
 
   config = lib.mkIf cfg.enable {
     time.timeZone = "Europe/Madrid";

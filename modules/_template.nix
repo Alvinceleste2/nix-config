@@ -16,7 +16,8 @@ in
   };
 
   config = lib.mkIf cfg.enable {
-    boot.loader.systemd-boot.enable = true;
-    boot.loader.efi.canTouchEfiVariables = true;
+
+    # Settings defined by the module...
+
   };
 }

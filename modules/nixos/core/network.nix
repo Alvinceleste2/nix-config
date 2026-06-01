@@ -2,14 +2,18 @@
   config,
   pkgs,
   lib,
+  dir,
+  desc,
   ...
 }:
 
 let
-  cfg = config.modules.core.network;
+  cfg = lib.attrByPath dir { } config;
 in
 {
-  options.modules.core.network.enable = lib.mkEnableOption "enables core/network";
+  options = lib.setAttrByPath dir {
+    enable = lib.mkEnableOption desc;
+  };
 
   config = lib.mkIf cfg.enable {
     networking.networkmanager.enable = true;

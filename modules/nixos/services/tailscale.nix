@@ -2,14 +2,18 @@
   config,
   pkgs,
   lib,
+  dir,
+  desc,
   ...
 }:
 
 let
-  cfg = config.modules.services.tailscale;
+  cfg = lib.attrByPath dir { } config;
 in
 {
-  options.modules.services.tailscale.enable = lib.mkEnableOption "enables services/tailscale";
+  options = lib.setAttrByPath dir {
+    enable = lib.mkEnableOption desc;
+  };
 
   config = lib.mkIf cfg.enable {
     services.tailscale.enable = true;

@@ -2,15 +2,18 @@
   config,
   pkgs,
   lib,
+  dir,
+  desc,
   ...
 }:
 
 let
-  cfg = config.modules.core.garbage-collection;
+  cfg = lib.attrByPath dir { } config;
 in
 {
-  options.modules.core.garbage-collection.enable =
-    lib.mkEnableOption "enables core/garbage-collection";
+  options = lib.setAttrByPath dir {
+    enable = lib.mkEnableOption desc;
+  };
 
   config = lib.mkIf cfg.enable {
     nix.gc = {

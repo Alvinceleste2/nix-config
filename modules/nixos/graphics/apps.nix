@@ -2,14 +2,18 @@
   config,
   pkgs,
   lib,
+  dir,
+  desc,
   ...
 }:
 
 let
-  cfg = config.modules.graphics.apps;
+  cfg = lib.attrByPath dir { } config;
 in
 {
-  options.modules.graphics.apps.enable = lib.mkEnableOption "enables graphics/apps";
+  options = lib.setAttrByPath dir {
+    enable = lib.mkEnableOption desc;
+  };
 
   config = lib.mkIf cfg.enable {
     environment.systemPackages = with pkgs; [

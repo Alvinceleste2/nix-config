@@ -2,15 +2,18 @@
   config,
   pkgs,
   lib,
+  dir,
+  desc,
   ...
 }:
 
 let
-  cfg = config.modules.graphics.display-manager;
+  cfg = lib.attrByPath dir { } config;
 in
 {
-  options.modules.graphics.display-manager.enable =
-    lib.mkEnableOption "enables graphics/display-manager";
+  options = lib.setAttrByPath dir {
+    enable = lib.mkEnableOption desc;
+  };
 
   config = lib.mkIf cfg.enable {
     services.displayManager.ly = {

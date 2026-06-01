@@ -2,15 +2,18 @@
   config,
   pkgs,
   lib,
+  dir,
+  desc,
   ...
 }:
 
 let
-  cfg = config.modules.graphics.virtualization;
+  cfg = lib.attrByPath dir { } config;
 in
 {
-  options.modules.graphics.virtualization.enable =
-    lib.mkEnableOption "enables graphics/virtualization";
+  options = lib.setAttrByPath dir {
+    enable = lib.mkEnableOption desc;
+  };
 
   config = lib.mkIf cfg.enable {
     virtualisation.virtualbox.host.enable = true;

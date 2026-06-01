@@ -8,7 +8,7 @@
     ../../users/alvinceleste.nix
   ];
 
-  modules = {
+  modules.nixos = {
     core = {
       boot.enable = true;
       garbage-collection.enable = true;
