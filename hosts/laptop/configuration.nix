@@ -11,7 +11,6 @@
   modules.nixos = {
     core = {
       boot.enable = true;
-      garbage-collection.enable = true;
       network.enable = true;
       packages.enable = true;
       system.enable = true;
@@ -19,12 +18,15 @@
 
     graphics = {
       desktop-environments.hyprland.enable = true;
-      audio.enable = true;
       display-manager = {
         enable = true;
         dm = "greetd";
       };
       fonts.enable = true;
+    };
+
+    hardware = {
+      audio.enable = true;
     };
 
     profiles = {
@@ -33,6 +35,7 @@
 
     services = {
       tailscale.enable = true;
+      garbage-collection.enable = true;
     };
   };
 
