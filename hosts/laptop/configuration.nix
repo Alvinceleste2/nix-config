@@ -13,6 +13,7 @@
       boot.enable = true;
       network.enable = true;
       packages.enable = true;
+      ssh.enable = true;
       system.enable = true;
     };
 
