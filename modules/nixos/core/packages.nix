@@ -26,6 +26,7 @@ in
       stow
       tree
       neofetch
+      just
     ];
 
     programs.neovim.enable = true;
