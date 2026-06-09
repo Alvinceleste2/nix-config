@@ -27,6 +27,8 @@ in
       tree
       neofetch
       just
+
+      age
     ];
 
     programs.neovim.enable = true;

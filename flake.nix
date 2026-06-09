@@ -2,15 +2,19 @@
   description = "NixOS Config";
 
   inputs = {
+    # Official NixOS Package Sources
     nixpkgs.url = "github:nixos/nixpkgs/nixos-25.11";
-    #nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
+    nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
 
-    agenix.url = "github:ryantm/agenix";
-    agenix.inputs.nixpkgs.follows = "nixpkgs";
+    # Secrets management
+    sops-nix = {
+      url = "github:mic92/sops-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =
-    { nixpkgs, agenix, ... }@inputs:
+    { nixpkgs, sops-nix, ... }@inputs:
     {
       nixosConfigurations = {
         laptop = nixpkgs.lib.nixosSystem {
@@ -18,7 +22,6 @@
 
           modules = [
             ./hosts/laptop/configuration.nix
-            agenix.nixosModules.default
           ];
         };
       };
