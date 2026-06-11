@@ -35,6 +35,10 @@ in
 
     programs.neovim.enable = true;
 
+    environment.sessionVariables = {
+      EDITOR = "nvim";
+    };
+
     nix.settings.experimental-features = [
       "nix-command"
       "flakes"
