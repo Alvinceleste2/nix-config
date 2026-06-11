@@ -27,10 +27,6 @@ in
       tree
       neofetch
       just
-
-      # secret management tools
-      age
-      sops
     ];
 
     programs.neovim.enable = true;
