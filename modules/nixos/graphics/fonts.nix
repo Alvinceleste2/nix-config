@@ -25,5 +25,7 @@ in
       serif = [ "FantasqueSansM Nerd Font" ];
       monospace = [ "FantasqueSansM Nerd Font Mono" ];
     };
+
+    fonts.fontconfig.enable = true;
   };
 }

@@ -18,5 +18,6 @@
       githubKeyPath = config.sops.secrets."alvinceleste-github".path;
     };
     zsh.enable = true;
+    kitty.enable = true;
   };
 }
