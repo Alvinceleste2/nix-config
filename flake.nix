@@ -11,17 +11,37 @@
       url = "github:mic92/sops-nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    # Home-manager
+    home-manager = {
+      url = "github:nix-community/home-manager/release-25.11";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    # My secrets
+    nix-secrets = {
+      url = "git+ssh://git@github.com/Alvinceleste2/nix-secrets.git";
+      flake = false;
+    };
   };
 
   outputs =
-    { nixpkgs, sops-nix, ... }@inputs:
+    {
+      nixpkgs,
+      sops-nix,
+      home-manager,
+      nix-secrets,
+      ...
+    }@inputs:
     {
       nixosConfigurations = {
         laptop = nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
+
+          specialArgs = { inherit inputs; };
+
           modules = [
             ./hosts/laptop/configuration.nix
-            inputs.sops-nix.nixosModules.sops
           ];
         };
       };

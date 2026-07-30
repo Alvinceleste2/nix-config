@@ -2,6 +2,7 @@
   config,
   lib,
   pkgs,
+  inputs,
   ...
 }:
 
@@ -32,7 +33,11 @@ let
       folderList = lib.splitString "/" relativeStr;
 
       # These parameters are passed to modules.
-      dir = [ "modules" ] ++ folderList;
+      dir = [
+        "modules"
+        "nixos"
+      ]
+      ++ folderList;
       desc = "${lib.concatStringsSep "/" dir}";
     in
     import absolutePath {
@@ -41,6 +46,7 @@ let
         lib
         pkgs
         # Additional parameters
+        inputs
         dir
         desc
         ;

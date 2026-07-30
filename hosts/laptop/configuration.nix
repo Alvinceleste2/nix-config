@@ -3,18 +3,19 @@
 {
   imports = [
     ./hardware-configuration.nix
-    ../../modules
+    ../../modules/nixos
 
-    ../../users/alvinceleste.nix
+    ../../users/alvinceleste
   ];
 
   modules.nixos = {
     core = {
       boot.enable = true;
+      home-manager.enable = true;
       network.enable = true;
+      openssh.enable = true;
       packages.enable = true;
       sops.enable = true;
-      ssh.enable = true;
       system.enable = true;
     };
 

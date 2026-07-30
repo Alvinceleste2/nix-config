@@ -2,6 +2,7 @@
   config,
   pkgs,
   lib,
+  inputs,
   dir,
   desc,
   ...
@@ -11,13 +12,18 @@ let
   cfg = lib.attrByPath dir { } config;
 in
 {
+  imports = [
+    inputs.sops-nix.nixosModules.sops
+  ];
+
   options = lib.setAttrByPath dir {
     enable = lib.mkEnableOption desc;
   };
 
   config = lib.mkIf cfg.enable {
     sops = {
-      defaultSopsFile = ../../../secrets.yaml;
+      defaultSopsFile = "${inputs.nix-secrets}/secrets.yaml";
+      defaultSopsFormat = "yaml";
       validateSopsFiles = false;
 
       age = {
