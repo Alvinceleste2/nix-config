@@ -24,11 +24,11 @@
     "nix-secrets": {
       "flake": false,
       "locked": {
-        "lastModified": 1785409192,
-        "narHash": "sha256-HSRIDpAhbx8MMGEjqANlZrtOC6QZ4UNe2LAjyW5YpIA=",
+        "lastModified": 1785417620,
+        "narHash": "sha256-vHhs5mk/jTm2Y5z2UgFrLtswR0SgC5fGq0gYKNF3T0E=",
         "ref": "refs/heads/main",
-        "rev": "c9f2d2f9a34ff631c7cb9ba0714654d08cd2e55c",
-        "revCount": 1,
+        "rev": "8c17bcf897221f3386caccf53bf096e3a03eb0fb",
+        "revCount": 2,
         "type": "git",
         "url": "ssh://git@github.com/Alvinceleste2/nix-secrets.git"
       },
