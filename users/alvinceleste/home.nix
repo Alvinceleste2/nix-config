@@ -11,7 +11,12 @@
   home.stateVersion = "25.11";
   home.packages = [ ];
 
+  home.sessionVariables = {
+    EDITOR = "nvim";
+  };
+
   modules.home = {
+    dunst.enable = true;
     git.enable = true;
     ssh = {
       enable = true;
