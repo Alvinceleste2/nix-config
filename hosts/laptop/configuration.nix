@@ -1,4 +1,8 @@
-{ config, pkgs, ... }:
+{
+  config,
+  pkgs,
+  ...
+}:
 
 {
   imports = [
@@ -20,7 +24,7 @@
     };
 
     graphics = {
-      desktop-environments.hyprland.enable = true;
+      hyprland.enable = true;
       display-manager = {
         enable = true;
         dm = "greetd";

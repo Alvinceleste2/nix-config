@@ -1,7 +1,7 @@
 {
   config,
-  pkgs,
   lib,
+  pkgs,
   dir,
   desc,
   ...
@@ -18,13 +18,18 @@ in
   config = lib.mkIf cfg.enable (
     lib.mkMerge [
       {
-        programs.hyprland = {
+
+        wayland.windowManager.hyprland = {
           enable = true;
-          xwayland.enable = true;
         };
 
-        environment.systemPackages = with pkgs; [
-          kitty
+        modules.home = {
+          kitty.enable = true;
+          fuzzel.enable = true;
+          dunst.enable = true;
+        };
+
+        home.packages = with pkgs; [
           hyprlock
           hypridle
           hyprpaper
@@ -35,7 +40,6 @@ in
           grim
           slurp
           jq
-          dunst
           rose-pine-icon-theme
           rose-pine-gtk-theme
           bibata-cursors

@@ -18,6 +18,7 @@
   modules.home = {
     dunst.enable = true;
     git.enable = true;
+    hyprland.enable = true;
     ssh = {
       enable = true;
       githubKeyPath = config.sops.secrets."alvinceleste-github".path;
