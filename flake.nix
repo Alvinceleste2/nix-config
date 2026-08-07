@@ -4,13 +4,16 @@
   inputs = {
     # Official NixOS Package Sources
     nixpkgs.url = "github:nixos/nixpkgs/nixos-25.11";
-    nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
+    # nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
 
     # Secrets management
     sops-nix = {
       url = "github:mic92/sops-nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    flake-parts.url = "github:hercules-ci/flake-parts";
+    import-tree.url = "github:vic/import-tree";
 
     # Home-manager
     home-manager = {
@@ -26,24 +29,10 @@
   };
 
   outputs =
-    {
-      nixpkgs,
-      sops-nix,
-      home-manager,
-      nix-secrets,
-      ...
-    }@inputs:
-    {
-      nixosConfigurations = {
-        laptop = nixpkgs.lib.nixosSystem {
-          system = "x86_64-linux";
-
-          specialArgs = { inherit inputs; };
-
-          modules = [
-            ./hosts/laptop/configuration.nix
-          ];
-        };
-      };
+    inputs:
+    inputs.flake-parts.lib.mkFlake { inherit inputs; } {
+      imports = [
+        (inputs.import-tree ./modules)
+      ];
     };
 }
