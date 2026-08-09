@@ -24,24 +24,24 @@
           };
 
           listener = [
-            # 2.5 min: Brillo al mínimo (solo si no es "desktop")
+            # 2.5 min: Minimun brightness
             {
               timeout = 150;
-              on-timeout = "[ $HOSTNAME == \"desktop\" ] || brightnessctl -s set 10";
-              on-resume = "[ $HOSTNAME == \"desktop\" ] || brightnessctl -r";
+              on-timeout = "brightnessctl -s set 10";
+              on-resume = "brightnessctl -r";
             }
-            # 5 min: Bloquear pantalla (solo si no es "desktop")
+            # 5 min: Lock Screen
             {
               timeout = 300;
-              on-timeout = "[ $HOSTNAME == \"desktop\" ] || hyprlock";
+              on-timeout = "hyprlock";
             }
-            # 5 min: Apagar monitores (DPMS)
+            # 5 min: Shutdown Monitors (DPMS)
             {
               timeout = 300;
               on-timeout = "hyprctl dispatch dpms off";
               on-resume = "hyprctl dispatch dpms on";
             }
-            # 30 min: Suspender el sistema
+            # 30 min: System Suspend
             {
               timeout = 1800;
               on-timeout = "systemctl suspend";
