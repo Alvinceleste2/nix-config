@@ -26,6 +26,12 @@
       url = "git+ssh://git@github.com/Alvinceleste2/nix-secrets.git";
       flake = false;
     };
+
+    # Zen browser
+    zen-browser = {
+      url = "github:0xc000022070/zen-browser-flake";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =

@@ -17,9 +17,8 @@
         HOSTNAME = "laptop";
       };
 
-      imports = [
-        self.modules.nixos.display-manager
-        self.modules.nixos.firefox
+      imports = with self.modules.nixos; [
+        display-manager
       ];
 
       home-manager.sharedModules = [
@@ -34,9 +33,12 @@
       #  enable = true;
       #};
 
-      imports = [
-        self.modules.homeManager.kitty
-        self.modules.homeManager.zsh
+      imports = with self.modules.homeManager; [
+        kitty
+        firefox
+        zsh
+        fuzzel
+        dunst
       ];
 
       home.packages = with pkgs; [
@@ -58,9 +60,6 @@
 
         ###
 
-        kitty
-        firefox
-        fuzzel
         kdePackages.dolphin
         gnome-calculator
 
