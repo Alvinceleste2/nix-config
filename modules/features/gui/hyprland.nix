@@ -19,6 +19,8 @@
 
       imports = with self.modules.nixos; [
         display-manager
+        audio
+        fonts
       ];
 
       home-manager.sharedModules = [
@@ -39,10 +41,10 @@
         zsh
         fuzzel
         dunst
+        hyprlock
       ];
 
       home.packages = with pkgs; [
-        hyprlock
         hypridle
         hyprpaper
         hyprpicker
