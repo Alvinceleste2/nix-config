@@ -42,12 +42,15 @@
         fuzzel
         dunst
         hyprlock
+        hypridle
+        hyprpaper
+        apps
       ];
 
       home.packages = with pkgs; [
-        hypridle
-        hyprpaper
+        brightnessctl
         hyprpicker
+
         waybar
         cliphist
         wl-clipboard
@@ -57,21 +60,6 @@
         rose-pine-icon-theme
         rose-pine-gtk-theme
         bibata-cursors
-
-        brightnessctl
-
-        ###
-
-        kdePackages.dolphin
-        gnome-calculator
-
-        spotify
-        signal-desktop
-        discord
-        pencil
-        libreoffice
-
-        jellyfin-desktop
       ];
 
       home.sessionVariables = {
