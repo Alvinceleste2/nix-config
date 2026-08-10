@@ -1,24 +1,24 @@
 { self, ... }:
 {
   flake.modules.homeManager.waybarLaptop = {
-    imports = [
-      self.modules.homeManager.waybarCore
-      self.modules.homeManager.waybarClock
-      self.modules.homeManager.waybarHyprlandWorkspaces
-      self.modules.homeManager.waybarHyprlandWindow
-      self.modules.homeManager.waybarDisk
-      self.modules.homeManager.waybarMemory
-      self.modules.homeManager.waybarCpu
-      self.modules.homeManager.waybarNetwork
-      self.modules.homeManager.waybarBattery
-      self.modules.homeManager.waybarBacklight
-      self.modules.homeManager.waybarPulseaudio
+    imports = with self.modules.homeManager; [
+      waybarCore
+      waybarClock
+      waybarHyprlandWorkspaces
+      waybarHyprlandWindow
+      waybarDisk
+      waybarMemory
+      waybarCpu
+      waybarNetwork
+      waybarBattery
+      waybarBacklight
+      waybarPulseaudio
     ];
   };
 
   flake.modules.homeManager.waybarDesktop = {
-    imports = [
-      self.modules.homeManager.waybarCommon
+    imports = with self.modules.homeManager; [
+      waybarCore
     ];
   };
 
