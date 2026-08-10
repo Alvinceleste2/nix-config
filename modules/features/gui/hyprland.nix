@@ -393,8 +393,8 @@
       settings = {
         bind = [
           # Brightness control
-          ", XF86MonBrightnessUp, exec, brightnessctl set +5% && dunstify -u low \"Brightness: $(($(brightnessctl get) * 100 / $(brightnessctl m) ))\" -h string:x-dunst-stack-tag:brightness -h int:value:$(($(brightnessctl get) * 100 / $(brightnessctl m) )) -t 3000"
-          ", XF86MonBrightnessDown, exec, brightnessctl set 5%- && dunstify -u low \"Brightness: $(($(brightnessctl get) * 100 / $(brightnessctl m) ))\" -h string:x-dunst-stack-tag:brightness -h int:value:$(($(brightnessctl get) * 100 / $(brightnessctl m) )) -t 3000"
+          ", XF86MonBrightnessUp, exec, brightnessctl set +5% && dunstify -u low \"Brightness: $(($(brightnessctl get) * 100 / $(brightnessctl m) ))%\" -h string:x-dunst-stack-tag:brightness -h int:value:$(($(brightnessctl get) * 100 / $(brightnessctl m) )) -t 3000"
+          ", XF86MonBrightnessDown, exec, brightnessctl set 5%- && dunstify -u low \"Brightness: $(($(brightnessctl get) * 100 / $(brightnessctl m) ))%\" -h string:x-dunst-stack-tag:brightness -h int:value:$(($(brightnessctl get) * 100 / $(brightnessctl m) )) -t 3000"
         ];
       };
     };
