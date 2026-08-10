@@ -11,7 +11,7 @@
     imports = [
 
       self.modules.nixos.core
-      self.modules.nixos.hyprland
+      self.modules.nixos.hyprlandLaptop
       self.modules.nixos.ssh
 
       self.modules.nixos.alvinceleste

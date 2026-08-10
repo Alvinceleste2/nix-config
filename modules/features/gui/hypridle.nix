@@ -1,6 +1,31 @@
 { self, ... }:
 {
-  flake.modules.homeManager.hypridle =
+
+  flake.modules.homeManager.hypridleLaptop =
+    { lib, ... }:
+    {
+      imports = with self.modules.homeManager; [
+        hypridleCore
+      ];
+      services.hypridle.settings = {
+        listener = lib.mkAfter [
+          # 2.5 min: Minimun brightness
+          {
+            timeout = 150;
+            on-timeout = "brightnessctl -s set 10";
+            on-resume = "brightnessctl -r";
+          }
+        ];
+      };
+    };
+
+  flake.modules.homeManager.hypridleDesktop = {
+    imports = with self.modules.homeManager; [
+      hypridleCore
+    ];
+  };
+
+  flake.modules.homeManager.hypridleCore =
     { pkgs, ... }:
     {
       imports = with self.modules.homeManager; [
@@ -24,12 +49,6 @@
           };
 
           listener = [
-            # 2.5 min: Minimun brightness
-            {
-              timeout = 150;
-              on-timeout = "brightnessctl -s set 10";
-              on-resume = "brightnessctl -r";
-            }
             # 5 min: Lock Screen
             {
               timeout = 300;
