@@ -1,9 +1,14 @@
+{ self, ... }:
 {
   flake.modules.nixos.kitty = { };
 
   flake.modules.homeManager.kitty =
     { pkgs, ... }:
     {
+      imports = [
+        self.modules.homeManager.fontsFantasqueSansMono
+      ];
+
       programs.kitty = {
         enable = true;
 

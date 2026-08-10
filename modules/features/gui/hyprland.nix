@@ -18,6 +18,7 @@
       };
 
       imports = with self.modules.nixos; [
+        home-manager
         display-manager
         audio
         fonts
@@ -45,13 +46,13 @@
         hypridle
         hyprpaper
         apps
+        waybarLaptop
       ];
 
       home.packages = with pkgs; [
         brightnessctl
         hyprpicker
 
-        waybar
         cliphist
         wl-clipboard
         grim

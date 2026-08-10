@@ -14,4 +14,14 @@
 
       fonts.fontconfig.enable = true;
     };
+
+  flake.modules.homeManager.fontsFantasqueSansMono =
+    { pkgs, ... }:
+    {
+      fonts.fontconfig.enable = true;
+
+      home.packages = [
+        pkgs.nerd-fonts.fantasque-sans-mono
+      ];
+    };
 }
