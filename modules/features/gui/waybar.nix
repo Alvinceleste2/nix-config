@@ -70,7 +70,29 @@
             background-color: transparent;
             color: @text;
           }
+
+
+          #clock,
+          #workspaces,
+          #window,
+          #network,
+          #disk,
+          #memory,
+          #cpu,
+          #battery,
+          #backlight,
+          #pulseaudio {
+            background: @surface;
+            opacity: 1.0;
+
+            padding: 0px 10px;
+            margin: 0px 0px;
+            margin-top: 15px;
+            margin-bottom: 0px;
+            border: 1px solid @highlightMed;
+          }
         '';
+        # Common settings above. Must include new modules
       };
     };
 
@@ -172,6 +194,7 @@
         settings.mainBar = {
           "hyprland/window" = {
             format = "{}";
+            swap-icon-label = true;
           };
 
           modules-center = lib.mkAfter [

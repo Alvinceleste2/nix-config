@@ -121,6 +121,9 @@
   flake.modules.homeManager.hyprlandAutostart = {
     wayland.windowManager.hyprland.settings = {
       exec-once = [
+        # Load Waybar
+        "waybar"
+
         # Load Hypridle
         "hypridle"
 
@@ -200,19 +203,17 @@
   };
 
   flake.modules.homeManager.hyprlandKeybindings = {
-    home.sessionVariables = {
-      TERMINAL = "kitty";
-      BROWSER = "firefox";
-      LAUNCHER = "fuzzel";
-      FILEMANAGER = "dolphin";
-      CALCULATOR = "gnome-calculator";
-    };
-
     wayland.windowManager.hyprland.settings =
       let
         mainMod = "SUPER";
       in
       {
+        "$TERMINAL" = "kitty";
+        "$BROWSER" = "firefox";
+        "$LAUNCHER" = "fuzzel";
+        "$FILEMANAGER" = "dolphin";
+        "$CALCULATOR" = "gnome-calculator";
+
         bind = [
           # Applications
           "${mainMod}, RETURN, exec, $TERMINAL"
@@ -406,7 +407,7 @@
 
   flake.modules.homeManager.hyprlandDesktop = {
     imports = with self.modules.homeManager; [
-      waybarLaptop
+      waybarDesktop
       hypridleDesktop
     ];
   };
