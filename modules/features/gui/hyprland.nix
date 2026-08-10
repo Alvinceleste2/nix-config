@@ -55,10 +55,10 @@
     {
       wayland.windowManager.hyprland = {
         enable = true;
+        configType = "hyprlang";
       };
 
       imports = with self.modules.homeManager; [
-
         hyprlandAnimations
         hyprlandAutostart
         hyprlandCursor
@@ -329,7 +329,6 @@
   flake.modules.homeManager.hyprlandLayout = {
     wayland.windowManager.hyprland.settings = {
       dwindle = {
-        pseudotile = true;
         preserve_split = true;
         force_split = 2;
       };
@@ -359,7 +358,7 @@
   flake.modules.homeManager.hyprlandWindowrule = {
     wayland.windowManager.hyprland.settings = {
       windowrule = [
-        "float, title:Calculator"
+        "float on, match:title Calculator"
       ];
     };
   };

@@ -20,7 +20,7 @@
           font = "FantasqueSansM Nerd Font 12";
 
           icon_theme = "rose-pine";
-          icon_path = "/run/current-system/sw/share/icons/rose-pine";
+          # icon_path = "/run/current-system/sw/share/icons/rose-pine";
           enable_recursive_icon_lookup = true;
           max_icon_size = 24;
           corner_radius = 10;

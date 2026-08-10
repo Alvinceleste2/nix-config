@@ -12,7 +12,7 @@
         unzip
         stow
         tree
-        neofetch
+        fastfetch
         just
       ];
 
