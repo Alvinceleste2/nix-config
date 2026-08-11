@@ -26,21 +26,12 @@
 
           # Asignación de la imagen al monitor primario
           wallpaper = [
-            "eDP-1,${wallpaper}"
+            {
+              monitor = "";
+              path = wallpaper;
+              fit_mode = "fill";
+            }
           ];
-
-          # NOTA: Si llegas a actualizar a las versiones más recientes de hyprpaper
-          # que usan la sintaxis de bloque `wallpaper = { monitor = ... }`,
-          # la estructura en Nix Manager sería la siguiente (comentada por ahora):
-          /*
-            wallpaper = [
-              {
-                monitor = ""; # Para aplicar a todos (*) o pon "eDP-1"
-                path = wallpaper;
-                fit_mode = "fill";
-              }
-            ];
-          */
         };
       };
     };
