@@ -1,27 +1,4 @@
-{ self, inputs, ... }:
 {
-  flake.nixosConfigurations.laptop = inputs.nixpkgs.lib.nixosSystem {
-    modules = [
-      self.modules.nixos.laptopConfiguration
-      self.modules.nixos.laptopHardware
-    ];
-  };
-
-  flake.modules.nixos.laptopConfiguration = {
-    imports = [
-
-      self.modules.nixos.core
-      self.modules.nixos.hyprlandLaptop
-      self.modules.nixos.ssh
-
-      self.modules.nixos.alvinceleste
-    ];
-
-    networking.hostName = "laptop";
-
-    system.stateVersion = "25.11";
-  };
-
   flake.modules.nixos.laptopHardware =
     {
       config,
