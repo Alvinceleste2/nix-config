@@ -4,6 +4,8 @@
       enable = true;
       listenAddresses = [ ];
     };
+
+    programs.ssh.startAgent = true;
   };
 
   flake.modules.homeManager.ssh =
