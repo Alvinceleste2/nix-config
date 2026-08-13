@@ -11,8 +11,8 @@ From yout host, copy the public SSH key to the server
 
 ```bash
 export NIXOS_HOST=192.168.2.xxx
-ssh-add ~/.ssh/notthebee
-ssh-copy-id -i ~/.ssh/notthebee root@$NIXOS_HOST
+ssh-add ~/.ssh/alvinceleste
+ssh-copy-id -i ~/.ssh/alvinceleste root@$NIXOS_HOST
 ```
 
 SSH into the host with the agent forwarding enabled (for the secrets repo access)
@@ -49,7 +49,7 @@ mkdir -p /mnt/etc/nixos
 git clone https://github.com/Alvinceleste2/nix-config.git /mnt/etc/nixos
 ```
 
-Put the provate key into place (required for secret management)
+Put the private key into place (required for secret management)
 
 ```bash
 mkdir -p /mnt/home/alvinceleste/.ssh
