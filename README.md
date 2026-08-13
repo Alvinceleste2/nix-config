@@ -1,4 +1,4 @@
-Installation Runbook (NixOS)
+== Installation Runbook (NixOS)
 
 Create a root password using the TTY
 
@@ -80,4 +80,40 @@ Reboot
 
 ```bash
 reboot
+```
+
+== Secure Boot Setup
+
+Enable lanzaboote module inside the host config
+
+```nix
+imports = [
+    self.modules.nixos.lanzaboote
+];
+```
+
+Generate secure boot keys
+
+```bash
+sudo sbctl create-keys
+```
+
+Enroll generated keys (optional `--microsoft` and `--firmware-builtin` flags)
+
+```
+sudo sbctl enroll-keys <optional_flags>
+```
+
+Verify the enrollment
+
+```
+sudo sbctl status
+```
+
+Enable Secure Boot into the BIOS (also, don't forget to setup a password!)
+
+After rebooting, check
+
+```
+bootctl status
 ```
