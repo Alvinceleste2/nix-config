@@ -155,11 +155,11 @@
     "nix-secrets": {
       "flake": false,
       "locked": {
-        "lastModified": 1785417620,
-        "narHash": "sha256-vHhs5mk/jTm2Y5z2UgFrLtswR0SgC5fGq0gYKNF3T0E=",
+        "lastModified": 1786621052,
+        "narHash": "sha256-aqTLUXBZRRXUDEuEPRV74glj2+kxt1J5vo+9dvCXZN4=",
         "ref": "refs/heads/main",
-        "rev": "8c17bcf897221f3386caccf53bf096e3a03eb0fb",
-        "revCount": 2,
+        "rev": "03641df834cf52a81b42ce17a2ed2709ee627a08",
+        "revCount": 4,
         "type": "git",
         "url": "ssh://git@github.com/Alvinceleste2/nix-secrets.git"
       },
@@ -170,11 +170,11 @@
     },
     "nixpkgs": {
       "locked": {
-        "lastModified": 1786313170,
-        "narHash": "sha256-9BG7OgUWdu0ONDO5X2q6+K4bsuBITkX/3W4nNJu1Ito=",
+        "lastModified": 1786535285,
+        "narHash": "sha256-rG5HKMAgAhMgydvKGtco6rqTxRq4EDZQCx9USLvVqYw=",
         "owner": "nixos",
         "repo": "nixpkgs",
-        "rev": "fcb8fcd6bf2d0adecae5bd491afaaaf8311b758d",
+        "rev": "9f78f44a87948854445dae0b6bf82b2e87e4efb5",
         "type": "github"
       },
       "original": {
@@ -283,11 +283,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1786347712,
-        "narHash": "sha256-yH+jWXH2TVd5h3J5KoZiE8/4O4HqoggfB0zl9uVj39w=",
+        "lastModified": 1786515268,
+        "narHash": "sha256-MPj7iVUEVlGg004Nsob4kMlkj6dz0BePTWZZqRc5b2o=",
         "owner": "0xc000022070",
         "repo": "zen-browser-flake",
-        "rev": "945efbc704b7f8c1731a922aabbc5d95edc9eb74",
+        "rev": "044be1aba87c30d42568e817c78a94c1d8eacb14",
         "type": "github"
       },
       "original": {

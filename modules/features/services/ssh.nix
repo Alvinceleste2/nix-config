@@ -14,7 +14,7 @@
       options.myHome.services.ssh = {
         githubKeyPath = lib.mkOption {
           type = lib.types.nullOr lib.types.str;
-          default = "~/.ssh/id_ed25519";
+          default = "${config.home.homeDirectory}/.ssh/${config.home.username}";
           description = "Route of private SSH key for GitHub";
         };
       };
