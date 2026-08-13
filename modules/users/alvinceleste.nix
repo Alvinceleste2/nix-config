@@ -39,10 +39,11 @@
           self.modules.homeManager.alvinceleste
           self.modules.homeManager.sops
 
+          self.modules.homeManager.nixvim
+
           self.modules.homeManager.git
           self.modules.homeManager.zsh
           self.modules.homeManager.ssh
-          self.modules.homeManager.fuzzel
         ];
 
         sops.secrets."alvinceleste-github" = { };
@@ -54,9 +55,5 @@
     home.homeDirectory = "/home/alvinceleste";
     home.stateVersion = "25.11";
     home.packages = [ ];
-
-    home.sessionVariables = {
-      EDITOR = "nvim";
-    };
   };
 }
