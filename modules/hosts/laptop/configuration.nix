@@ -2,8 +2,9 @@
 {
   flake.modules.nixos.laptopConfiguration = {
     imports = [
-
       self.modules.nixos.core
+      self.modules.nixos.lanzaboote
+
       self.modules.nixos.hyprlandLaptop
 
       self.modules.nixos.ssh
