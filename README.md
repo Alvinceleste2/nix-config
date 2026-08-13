@@ -1,4 +1,4 @@
-== Installation Runbook (NixOS)
+## Installation Runbook (NixOS)
 
 Create a root password using the TTY
 
@@ -82,7 +82,7 @@ Reboot
 reboot
 ```
 
-== Secure Boot Setup
+## Secure Boot Setup
 
 Enable lanzaboote module inside the host config
 
@@ -117,3 +117,6 @@ After rebooting, check
 ```
 bootctl status
 ```
+
+>[!NOTE]
+> *Useful Commands:* `nix-collect-garbage`, `nixos-generate-config`
