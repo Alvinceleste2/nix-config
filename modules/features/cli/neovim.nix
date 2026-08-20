@@ -16,6 +16,10 @@
       self.modules.homeManager.nixvimLsp
       self.modules.homeManager.nixvimFormat
       self.modules.homeManager.nixvimCompletions
+      self.modules.homeManager.nixvimColorscheme
+
+      self.modules.homeManager.nixvimPluginTreesitter
+      self.modules.homeManager.nixvimPluginNeotree
     ];
 
     programs.nixvim = {
@@ -262,6 +266,32 @@
         options.desc = "Go to paragraph forward";
       }
 
+      # --- Window navigation ---
+      {
+        mode = "n";
+        key = "<C-h>";
+        action = "<C-w>h";
+        options.desc = "Left window";
+      }
+      {
+        mode = "n";
+        key = "<C-j>";
+        action = "<C-w>j";
+        options.desc = "Down window";
+      }
+      {
+        mode = "n";
+        key = "<C-k>";
+        action = "<C-w>k";
+        options.desc = "Up window";
+      }
+      {
+        mode = "n";
+        key = "<C-l>";
+        action = "<C-w>l";
+        options.desc = "Right window";
+      }
+
       # --- Use Tab in normal and visual modes ---
       {
         mode = "n";
@@ -327,7 +357,7 @@
     {
       programs.nixvim = {
         extraPackages = with pkgs; [
-          nixfmt-rfc-style
+          nixfmt
           stylua
         ];
 
@@ -373,6 +403,85 @@
       plugins.luasnip.enable = true;
 
       plugins.lspkind.enable = true; # Completion icons
+    };
+  };
+
+  flake.modules.homeManager.nixvimColorscheme = {
+    programs.nixvim = {
+      colorschemes.rose-pine = {
+        enable = true;
+
+        settings = {
+          variant = "main";
+
+          styles = {
+            bold = true;
+            italic = true;
+            transparency = false;
+          };
+        };
+      };
+    };
+  };
+
+  flake.modules.homeManager.nixvimPluginTreesitter = {
+    programs.nixvim = {
+      plugins.treesitter = {
+        enable = true;
+
+        settings = {
+          highlight.enable = true;
+          indent.enable = true;
+
+          ensureInstalled = [
+            "nix"
+            "lua"
+          ];
+        };
+      };
+    };
+  };
+
+  flake.modules.homeManager.nixvimPluginNeotree = {
+    programs.nixvim = {
+      plugins.neo-tree = {
+        enable = true;
+
+        settings = {
+          enable_git_status = true;
+          enable_diagnostics = true;
+
+          close_if_last_window = true;
+
+          filesystem = {
+            follow_current_file.enable = true;
+
+            filtered_items = {
+              visible = true;
+              hide_dotfiles = false;
+              hide_gitignored = false;
+            };
+
+            window = {
+              mappings = {
+                "v" = "open_vsplit";
+                "h" = "open_split";
+              };
+            };
+          };
+        };
+      };
+
+      plugins.web-devicons.enable = true;
+
+      keymaps = [
+        {
+          mode = "n";
+          key = "<leader>e";
+          action = "<cmd>Neotree toggle<CR>";
+          options.desc = "Toggle file explorer";
+        }
+      ];
     };
   };
 }
