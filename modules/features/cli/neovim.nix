@@ -13,6 +13,8 @@
       self.modules.homeManager.nixvimOptions
       self.modules.homeManager.nixvimSpell
       self.modules.homeManager.nixvimKeymaps
+      self.modules.homeManager.nixvimLsp
+      self.modules.homeManager.nixvimFormat
     ];
 
     programs.nixvim = {
@@ -285,5 +287,63 @@
         options.desc = "Indent left";
       }
     ];
+  };
+
+  flake.modules.homeManager.nixvimLsp = {
+    programs.nixvim.plugins.lsp = {
+      enable = true;
+
+      servers = {
+        nil_ls.enable = true;
+        lua_ls.enable = true;
+        # pyright.enable = true;
+        # clangd.enable = true;
+      };
+
+      keymaps.lspBuf = {
+        "<leader>rn" = "rename";
+        "<leader>ca" = "code_action";
+
+        "<leader>k" = "hover";
+        "gd" = "definition";
+      };
+
+      keymaps.diagnostic = {
+        "<leader>cd" = "open_float";
+        "[d" = "goto_prev";
+        "]d" = "goto_next";
+      };
+    };
+  };
+
+  flake.modules.homeManager.nixvimFormat =
+    { pkgs, ... }:
+    {
+      programs.nixvim = {
+        extraPackages = with pkgs; [
+          nixfmt-rfc-style
+          stylua
+        ];
+
+        plugins.conform-nvim = {
+          enable = true;
+
+          settings = {
+            format_on_save = {
+              timeout_ms = 500;
+              lsp_fallback = true;
+            };
+
+            formatters_by_ft = {
+              nix = [ "nixfmt" ];
+              lua = [ "stylua" ];
+            };
+          };
+        };
+      };
+    };
+
+  flake.modules.homeManager.nixvimCompletions = {
+
   };
 }
