@@ -15,6 +15,7 @@
       self.modules.homeManager.nixvimKeymaps
       self.modules.homeManager.nixvimLsp
       self.modules.homeManager.nixvimFormat
+      self.modules.homeManager.nixvimCompletions
     ];
 
     programs.nixvim = {
@@ -290,29 +291,34 @@
   };
 
   flake.modules.homeManager.nixvimLsp = {
-    programs.nixvim.plugins.lsp = {
-      enable = true;
+    programs.nixvim = {
+      plugins.lsp = {
+        enable = true;
 
-      servers = {
-        nil_ls.enable = true;
-        lua_ls.enable = true;
-        # pyright.enable = true;
-        # clangd.enable = true;
+        servers = {
+          nil_ls.enable = true;
+          lua_ls.enable = true;
+          # pyright.enable = true;
+          # clangd.enable = true;
+        };
+
+        keymaps.lspBuf = {
+          "<leader>rn" = "rename";
+          "<leader>ca" = "code_action";
+
+          "<leader>k" = "hover";
+          "gd" = "definition";
+        };
+
+        keymaps.diagnostic = {
+          "<leader>cd" = "open_float";
+          "[d" = "goto_prev";
+          "]d" = "goto_next";
+        };
       };
 
-      keymaps.lspBuf = {
-        "<leader>rn" = "rename";
-        "<leader>ca" = "code_action";
-
-        "<leader>k" = "hover";
-        "gd" = "definition";
-      };
-
-      keymaps.diagnostic = {
-        "<leader>cd" = "open_float";
-        "[d" = "goto_prev";
-        "]d" = "goto_next";
-      };
+      plugins.nvim-lightbulb.enable = true; # Code actions bulb
+      plugins.fidget.enable = true; # Lsp status at start
     };
   };
 
@@ -344,6 +350,29 @@
     };
 
   flake.modules.homeManager.nixvimCompletions = {
+    programs.nixvim = {
+      plugins.cmp = {
+        enable = true;
 
+        settings = {
+          sources = [
+            { name = "nvim_lsp"; }
+            { name = "luasnip"; }
+            { name = "path"; }
+            { name = "buffer"; }
+          ];
+
+          mapping = {
+            "<CR>" = "cmp.mapping.confirm({ select = true })";
+            "<Tab>" = "cmp.mapping.select_next_item()";
+            "<S-Tab>" = "cmp.mapping.select_prev_item()";
+          };
+        };
+      };
+
+      plugins.luasnip.enable = true;
+
+      plugins.lspkind.enable = true; # Completion icons
+    };
   };
 }
