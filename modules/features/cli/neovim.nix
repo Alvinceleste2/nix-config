@@ -20,6 +20,11 @@
 
       self.modules.homeManager.nixvimPluginTreesitter
       self.modules.homeManager.nixvimPluginSnacks
+      self.modules.homeManager.nixvimPluginCursorline
+      self.modules.homeManager.nixvimPluginNeogen
+      self.modules.homeManager.nixvimPluginAutopairs
+      self.modules.homeManager.nixvimPluginColorizer
+      self.modules.homeManager.nixvimPluginTodocomments
     ];
 
     programs.nixvim = {
@@ -414,7 +419,6 @@
       };
 
       plugins.luasnip.enable = true;
-
       plugins.lspkind.enable = true; # Completion icons
     };
   };
@@ -455,42 +459,50 @@
     };
   };
 
+  flake.modules.homeManager.nixvimPluginGitsigns = {
+    programs.nixvim = {
+      plugins.gitsigns = {
+        enable = true;
+
+        settings = {
+          signs = {
+            add = {
+              text = "┃";
+            };
+            change = {
+              text = "┃";
+            };
+            delete = {
+              text = "┃";
+            };
+            topdelete = {
+              text = "┃";
+            };
+            changedelete = {
+              text = "┃";
+            };
+            untracked = {
+              text = "┃";
+            };
+          };
+        };
+      };
+    };
+  };
+
   flake.modules.homeManager.nixvimPluginSnacks =
-    { pkgs, ... }:
+    { pkgs, lib, ... }:
     {
       home.packages = with pkgs; [
         lazygit
       ];
 
+      imports = [
+        self.modules.homeManager.nixvimPluginGitsigns
+      ];
+
       programs.nixvim = {
         plugins.web-devicons.enable = true;
-
-        plugins.gitsigns = {
-          enable = true;
-
-          settings = {
-            signs = {
-              add = {
-                text = "▎";
-              };
-              change = {
-                text = "▎";
-              };
-              delete = {
-                text = "";
-              };
-              topdelete = {
-                text = "";
-              };
-              changedelete = {
-                text = "▎";
-              };
-              untracked = {
-                text = "▎";
-              };
-            };
-          };
-        };
 
         plugins.snacks = {
           enable = true;
@@ -501,14 +513,19 @@
             dashboard = {
               enabled = true;
 
-              sections = [
-                { section = "header"; }
-                {
-                  section = "keys";
-                  gap = 1;
-                  padding = 1;
-                }
-              ];
+              sections = {
+                # raw is necessary to avoid overriding between imports
+                __raw = ''
+                  {
+                    { section = "header" },
+                    {
+                      section = "keys",
+                      gap = 1,
+                      padding = 1,
+                    },
+                  }
+                '';
+              };
             };
 
             explorer = {
@@ -531,15 +548,27 @@
               style = "compact";
             };
 
-            picker.enabled = true;
+            picker = {
+              enabled = true;
+
+              sources = {
+                files = {
+                  hidden = true;
+                };
+                grep = {
+                  hidden = true;
+                };
+                explorer = {
+                  hidden = true;
+                };
+              };
+            };
 
             scope.enabled = true;
 
             scroll.enabled = true;
 
-            statuscolumn.enabled = true;
-
-            words.enabled = true;
+            # statuscolumn.enabled = true;
           };
         };
 
@@ -581,48 +610,135 @@
             };
             options.desc = "Notification History";
           }
+
+          # Picker
+          {
+            mode = "n";
+            key = "<leader><space>";
+            action = {
+              __raw = "function() Snacks.picker.smart() end";
+            };
+            options.desc = "Smart Find Files";
+          }
+          {
+            mode = "n";
+            key = "<leader>sd";
+            action = {
+              __raw = "function() Snacks.picker.diagnostics() end";
+            };
+            options.desc = "Diagnostics and Errors (LSP)";
+          }
+          {
+            mode = "n";
+            key = "<leader>ss";
+            action = {
+              __raw = "function() Snacks.picker.lsp_symbols() end";
+            };
+            options.desc = "Document Symbols (Functions, Classes)";
+          }
+          {
+            mode = "n";
+            key = "<leader>sk";
+            action = {
+              __raw = "function() Snacks.picker.keymaps() end";
+            };
+            options.desc = "Search Keymaps";
+          }
         ];
       };
     };
 
-  flake.modules.homeManager.nixvimPluginNeotree = {
+  flake.modules.homeManager.nixvimPluginCursorline = {
     programs.nixvim = {
-      plugins.neo-tree = {
+      plugins.cursorline = {
         enable = true;
 
         settings = {
-          enable_git_status = true;
-          enable_diagnostics = true;
-
-          close_if_last_window = true;
-
-          filesystem = {
-            follow_current_file.enable = true;
-
-            filtered_items = {
-              visible = true;
-              hide_dotfiles = false;
-              hide_gitignored = false;
-            };
-
-            window = {
-              mappings = {
-                "v" = "open_vsplit";
-                "h" = "open_split";
-              };
+          cursorline = {
+            enable = true;
+            timeout = 1000;
+            number = false;
+          };
+          cursorword = {
+            enable = true;
+            min_length = 3;
+            hl = {
+              underline = true;
             };
           };
         };
       };
+    };
+  };
 
-      plugins.web-devicons.enable = true;
+  flake.modules.homeManager.nixvimPluginNeogen = {
+    programs.nixvim = {
+      plugins.neogen = {
+        enable = true;
+      };
 
       keymaps = [
         {
           mode = "n";
-          key = "<leader>e";
-          action = "<cmd>Neotree toggle<CR>";
-          options.desc = "Toggle file explorer";
+          key = "<leader>ng";
+          action = {
+            __raw = "function() require('neogen').generate() end";
+          };
+          options.desc = "Generate Annotation (Neogen)";
+        }
+      ];
+    };
+  };
+
+  flake.modules.homeManager.nixvimPluginAutopairs = {
+    programs.nixvim = {
+      plugins.nvim-autopairs = {
+        enable = true;
+      };
+    };
+  };
+
+  flake.modules.homeManager.nixvimPluginColorizer = {
+    programs.nixvim = {
+      plugins.colorizer = {
+        enable = true;
+
+        settings = {
+          filetypes = [ "*" ];
+          user_default_options = {
+            mode = "virtualtext"; # Modes: "background", "foreground", "virtualtext"
+            RGB = true;
+            RRGGBB = true;
+            names = true;
+            # RRGGBBAA = true;
+            # AARRGGBB = true;
+            # rgb_fn = false; # CSS rgb() and rgba()
+            # hsl_fn = false; # CSS hsl() and hsla()
+            # tailwind = false;
+          };
+        };
+      };
+    };
+  };
+
+  flake.modules.homeManager.nixvimPluginTodocomments = {
+    imports = [
+      self.modules.homeManager.nixvimPluginSnacks
+    ];
+
+    programs.nixvim = {
+      plugins.todo-comments = {
+        enable = true;
+      };
+
+      keymaps = [
+        {
+          mode = "n";
+          key = "<leader>st";
+          action = {
+            __raw = "function() Snacks.picker.todo_comments() end";
+          };
+          options.desc = "Search TODOs (Snacks Picker)";
         }
       ];
     };
