@@ -25,6 +25,7 @@
       self.modules.homeManager.nixvimPluginAutopairs
       self.modules.homeManager.nixvimPluginColorizer
       self.modules.homeManager.nixvimPluginTodocomments
+      self.modules.homeManager.nixvimPluginLualine
     ];
 
     programs.nixvim = {
@@ -54,7 +55,7 @@
         scrolloff = 5;
         foldmethod = "marker";
         signcolumn = "yes";
-        cmdheight = 1;
+        cmdheight = 0;
         hidden = true;
 
         fileencoding = "utf-8";
@@ -329,6 +330,7 @@
     programs.nixvim = {
       extraConfigLua = ''
         vim.diagnostic.config({
+          severity_sort = true,
           signs = {
             text = {
               [vim.diagnostic.severity.ERROR] = " ",
@@ -741,6 +743,84 @@
           options.desc = "Search TODOs (Snacks Picker)";
         }
       ];
+    };
+  };
+
+  flake.modules.homeManager.nixvimPluginLualine = { lib, ... }: {
+    programs.nixvim = {
+      plugins.lualine = {
+        enable = true;
+
+        settings = {
+          options = {
+            theme = "auto";
+            component_separators = "|";
+            section_separators = {
+              left = "";
+              right = "";
+            };
+            disabled_filetypes = {
+              statusline = [ "snacks_layout_box" ];
+            };
+          };
+
+          sections = {
+            lualine_a = [
+              {
+                __unkeyed-1 = "mode";
+                separator = {
+                  left = "";
+                };
+                right_padding = 2;
+              }
+            ];
+            lualine_b = [
+              "filename"
+              "branch"
+            ];
+            lualine_c = [
+              {
+                __unkeyed-1 = "diagnostics";
+                symbols = {
+                  error = " ";
+                  warn = " ";
+                  info = " ";
+                  hint = "󰌵 ";
+                };
+              }
+            ];
+            lualine_x = [
+              "encoding"
+              "fileformat"
+            ];
+            lualine_y = [
+              "filetype"
+              "progress"
+            ];
+            lualine_z = [
+              {
+                __unkeyed-1 = "location";
+                separator = {
+                  right = "";
+                };
+                left_padding = 2;
+              }
+            ];
+          };
+
+          inactive_sections = {
+            lualine_a = [ "filename" ];
+            lualine_b = [ ];
+            lualine_c = [ ];
+            lualine_x = [ ];
+            lualine_y = [ "filetype" ];
+            lualine_z = [ ];
+          };
+
+          tabline = { };
+          extensions = [ ];
+        };
+      };
     };
   };
 }
