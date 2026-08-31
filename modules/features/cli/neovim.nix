@@ -19,7 +19,7 @@
       self.modules.homeManager.nixvimColorscheme
 
       self.modules.homeManager.nixvimPluginTreesitter
-      self.modules.homeManager.nixvimPluginNeotree
+      self.modules.homeManager.nixvimPluginSnacks
     ];
 
     programs.nixvim = {
@@ -322,6 +322,19 @@
 
   flake.modules.homeManager.nixvimLsp = {
     programs.nixvim = {
+      extraConfigLua = ''
+        vim.diagnostic.config({
+          signs = {
+            text = {
+              [vim.diagnostic.severity.ERROR] = " ",
+              [vim.diagnostic.severity.WARN]  = " ",
+              [vim.diagnostic.severity.INFO]  = " ",
+              [vim.diagnostic.severity.HINT]  = "󰌵 ",
+            },
+          },
+        })
+      '';
+
       plugins.lsp = {
         enable = true;
 
@@ -441,6 +454,136 @@
       };
     };
   };
+
+  flake.modules.homeManager.nixvimPluginSnacks =
+    { pkgs, ... }:
+    {
+      home.packages = with pkgs; [
+        lazygit
+      ];
+
+      programs.nixvim = {
+        plugins.web-devicons.enable = true;
+
+        plugins.gitsigns = {
+          enable = true;
+
+          settings = {
+            signs = {
+              add = {
+                text = "▎";
+              };
+              change = {
+                text = "▎";
+              };
+              delete = {
+                text = "";
+              };
+              topdelete = {
+                text = "";
+              };
+              changedelete = {
+                text = "▎";
+              };
+              untracked = {
+                text = "▎";
+              };
+            };
+          };
+        };
+
+        plugins.snacks = {
+          enable = true;
+
+          settings = {
+            bigfile.enabled = true;
+
+            dashboard = {
+              enabled = true;
+
+              sections = [
+                { section = "header"; }
+                {
+                  section = "keys";
+                  gap = 1;
+                  padding = 1;
+                }
+              ];
+            };
+
+            explorer = {
+              enabled = true;
+              # replace_netrw = true;
+              auto_close = true;
+            };
+
+            image.enabled = true;
+
+            indent.enabled = true;
+
+            input.enabled = true;
+
+            lazygit.enabled = true;
+
+            notifier = {
+              enabled = true;
+              timeout = 3000;
+              style = "compact";
+            };
+
+            picker.enabled = true;
+
+            scope.enabled = true;
+
+            scroll.enabled = true;
+
+            statuscolumn.enabled = true;
+
+            words.enabled = true;
+          };
+        };
+
+        keymaps = [
+          # Lazygit
+          {
+            mode = "n";
+            key = "<leader>lg";
+            action = {
+              __raw = "function() Snacks.lazygit() end";
+            };
+            options.desc = "Toggle LazyGit";
+          }
+
+          # Explorer
+          {
+            mode = "n";
+            key = "<leader>e";
+            action = {
+              __raw = "function() Snacks.explorer() end";
+            };
+            options.desc = "Toggle Snacks Explorer";
+          }
+
+          # Notifier
+          {
+            mode = "n";
+            key = "<leader>nq";
+            action = {
+              __raw = "function() Snacks.notifier.hide() end";
+            };
+            options.desc = "Dismiss Notification";
+          }
+          {
+            mode = "n";
+            key = "<leader>nh";
+            action = {
+              __raw = "function() Snacks.notifier.show_history() end";
+            };
+            options.desc = "Notification History";
+          }
+        ];
+      };
+    };
 
   flake.modules.homeManager.nixvimPluginNeotree = {
     programs.nixvim = {
