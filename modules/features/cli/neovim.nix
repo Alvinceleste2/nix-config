@@ -355,9 +355,8 @@
         keymaps.lspBuf = {
           "<leader>rn" = "rename";
           "<leader>ca" = "code_action";
-
           "<leader>k" = "hover";
-          "gd" = "definition";
+          "<leader>gd" = "definition";
         };
 
         keymaps.diagnostic = {
@@ -379,6 +378,10 @@
         extraPackages = with pkgs; [
           nixfmt
           stylua
+          # clang-format
+          # black
+          # typstyle
+          # prettier
         ];
 
         plugins.conform-nvim = {
