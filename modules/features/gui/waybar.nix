@@ -19,6 +19,14 @@
   flake.modules.homeManager.waybarDesktop = {
     imports = with self.modules.homeManager; [
       waybarCore
+      waybarClock
+      waybarHyprlandWorkspaces
+      waybarHyprlandWindow
+      waybarDisk
+      waybarMemory
+      waybarCpu
+      waybarNetwork
+      waybarPulseaudio
     ];
   };
 
