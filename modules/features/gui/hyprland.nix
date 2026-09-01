@@ -33,11 +33,6 @@
         extraPortals = [ pkgs.xdg-desktop-portal-hyprland ];
       };
 
-      # TODO: delete
-      environment.sessionVariables = {
-        HOSTNAME = "laptop";
-      };
-
       imports = with self.modules.nixos; [
         home-manager
         display-manager
