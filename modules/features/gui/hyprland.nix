@@ -38,6 +38,8 @@
         display-manager
         audio
         fonts
+
+        udisks2
       ];
 
       home-manager.sharedModules = [
