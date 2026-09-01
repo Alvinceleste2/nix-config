@@ -56,6 +56,8 @@
       wayland.windowManager.hyprland = {
         enable = true;
         configType = "hyprlang";
+
+        systemd.enable = true;
       };
 
       imports = with self.modules.homeManager; [
@@ -81,6 +83,7 @@
         hyprlock
         hyprpaper
         apps
+        # rbw
       ];
 
       home.packages = with pkgs; [
@@ -213,6 +216,7 @@
         "$LAUNCHER" = "fuzzel";
         "$FILEMANAGER" = "dolphin";
         "$CALCULATOR" = "gnome-calculator";
+        # "$PASSWORD" = "rofi-rbw";
 
         bind = [
           # Applications
@@ -222,6 +226,7 @@
           "${mainMod}, C, exec, $CALCULATOR"
           "${mainMod}, SPACE, exec, $LAUNCHER"
           "${mainMod}, P, exec, hyprpicker -a"
+          # "${mainMod}, B, exec, rofi-rbw"
           "${mainMod} ALT, L, exec, hyprlock"
           "SUPER, V, exec, cliphist list | fuzzel --dmenu | cliphist decode | wl-copy"
 
