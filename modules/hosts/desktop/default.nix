@@ -4,7 +4,9 @@
     modules = [
       self.modules.nixos.desktopConfiguration
       self.modules.nixos.desktopHardware
-      self.modules.nixos.desktopDisko
+      # self.modules.nixos.desktopDisko
+
+      inputs.disko.nixosModules.disko
     ];
   };
 
