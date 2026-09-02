@@ -21,14 +21,6 @@ SSH into the host with the agent forwarding enabled (for the secrets repo access
 ssh -A root@$NIXOS_HOST
 ```
 
-Enable flakes
-
-```bash
-mkdir -p ~/.config/nix
-echo "experimental-features = nix-command flakes" >> ~/.config/nix/nix.conf
-```
-
-
 Partition and mount the drives using `disko`
 
 ```bash
@@ -55,7 +47,7 @@ Put the private key into place (required for secret management)
 mkdir -p /mnt/home/alvinceleste/.ssh
 exit
 scp ~/.ssh/alvinceleste root@$NIXOS_HOST:/mnt/home/alvinceleste/.ssh
-ssh root@$NIXOS_HOST
+ssh -A root@$NIXOS_HOST
 chmod 700 /mnt/home/alvinceleste/.ssh
 chmod 600 /mnt/home/alvinceleste/.ssh/*
 ```
@@ -67,6 +59,12 @@ nixos-install \
 --root "/mnt" \
 --no-root-passwd \
 --flake "git+file:///mnt/etc/nixos#<hostname>" # laptop, desktop, etc.
+```
+
+Might be necessary to create secure boot keys
+
+```bash
+nixos-enter --root /mnt -- nix-shell -p sbctl --run "sbctl create-keys"
 ```
 
 Unmount the filesystems
@@ -90,6 +88,12 @@ Enable lanzaboote module inside the host config
 imports = [
     self.modules.nixos.lanzaboote
 ];
+```
+
+It can also be done via nix-shell
+
+```bash
+sudo nix-shell -p sbctl
 ```
 
 Generate secure boot keys
