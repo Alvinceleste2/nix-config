@@ -5,6 +5,8 @@
       self.modules.nixos.laptopConfiguration
       self.modules.nixos.laptopHardware
       # self.modules.nixos.laptopDisko
+
+      inputs.disko.nixosModules.disko
     ];
   };
 
