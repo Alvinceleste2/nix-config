@@ -52,6 +52,12 @@ chmod 700 /mnt/home/alvinceleste/.ssh
 chmod 600 /mnt/home/alvinceleste/.ssh/*
 ```
 
+If the host is new, retrieve the new nixos hardware-configuration file and paste it into the appropiate place
+
+```bash
+sudo nixos-generate-config --no-filesystems --root /mnt
+```
+
 Install the system
 
 ```bash
@@ -61,7 +67,7 @@ nixos-install \
 --flake "git+file:///mnt/etc/nixos#<hostname>" # laptop, desktop, etc.
 ```
 
-Might be necessary to create secure boot keys
+Might be necessary to create secure boot keys and rerun nixos-install command
 
 ```bash
 nixos-enter --root /mnt -- nix-shell -p sbctl --run "sbctl create-keys"
