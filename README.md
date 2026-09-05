@@ -38,7 +38,7 @@ Clone this repository
 
 ```bash
 mkdir -p /mnt/etc/nixos
-git clone https://github.com/Alvinceleste2/nix-config.git /mnt/etc/nixos
+git clone git@github.com:Alvinceleste2/nix-config.git /mnt/etc/nixos
 ```
 
 Put the private key into place (required for secret management)
