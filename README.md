@@ -46,10 +46,15 @@ Put the private key into place (required for secret management)
 ```bash
 mkdir -p /mnt/home/alvinceleste/.ssh
 exit
+
 scp ~/.ssh/alvinceleste root@$NIXOS_HOST:/mnt/home/alvinceleste/.ssh
 ssh -A root@$NIXOS_HOST
+
+chown -R 1000:100 /mnt/home/alvinceleste
 chmod 700 /mnt/home/alvinceleste/.ssh
 chmod 600 /mnt/home/alvinceleste/.ssh/*
+
+chown -R 1000:100 /mnt/etc/nixos
 ```
 
 If the host is new, retrieve the new nixos hardware-configuration file and paste it into the appropiate place
