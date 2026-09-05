@@ -45,6 +45,10 @@
           position = "top";
           mod = "dock";
           height = 40;
+          margin-top = -4;
+          margin-bottom = 0;
+          margin-left = 0;
+          margin-right = 0;
         };
 
         style = ''
