@@ -411,5 +411,11 @@
       waybarDesktop
       hypridleDesktop
     ];
+
+    wayland.windowManager.hyprland = {
+      settings = {
+        monitor = [ "HDMI-A-1,2560x1440@120,auto,1.25" ];
+      };
+    };
   };
 }

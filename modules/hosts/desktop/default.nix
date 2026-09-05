@@ -7,6 +7,7 @@
       # self.modules.nixos.desktopDisko
 
       inputs.disko.nixosModules.disko
+      ./_disko.nix
     ];
   };
 
