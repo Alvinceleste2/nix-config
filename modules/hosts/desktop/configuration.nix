@@ -16,5 +16,12 @@
     networking.hostName = "desktop";
 
     system.stateVersion = "26.05";
+
+    hardware.nvidia = {
+      modesetting.enable = true;
+      powerManagement.enable = false;
+      open = false;
+      nvidiaSettings = true;
+    };
   };
 }

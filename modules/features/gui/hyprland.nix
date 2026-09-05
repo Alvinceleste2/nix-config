@@ -415,6 +415,15 @@
     wayland.windowManager.hyprland = {
       settings = {
         monitor = [ "HDMI-A-1,2560x1440@120,auto,1.25" ];
+
+        env = [
+          "WLR_NO_HARDWARE_CURSORS,1"
+          "HYPRCURSOR_ENABLED,0"
+
+          "LIBVA_DRIVER_NAME,nvidia"
+          "XDG_SESSION_TYPE,wayland"
+          "__GLX_VENDOR_LIBRARY_NAME,nvidia"
+        ];
       };
     };
   };
