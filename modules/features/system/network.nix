@@ -4,11 +4,11 @@
     {
       networking.networkmanager.enable = true;
 
-      # needed for eduroam
+      # eduroam :)
+      security.pam.services.ly.enableKwallet = true;
       environment.systemPackages = with pkgs; [
-        networkmanagerapplet
+        kdePackages.kwallet
+        kdePackages.kwallet-pam
       ];
-      security.polkit.enable = true;
-      #services.gnome.gnome-keyring.enable = true;
     };
 }
