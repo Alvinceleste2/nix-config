@@ -539,7 +539,14 @@
               auto_close = true;
             };
 
-            image.enabled = true;
+            image = {
+              enabled = true;
+
+              doc = {
+                enabled = false;
+                inline = false;
+              };
+            };
 
             indent.enabled = true;
 
@@ -596,6 +603,16 @@
               __raw = "function() Snacks.explorer() end";
             };
             options.desc = "Toggle Snacks Explorer";
+          }
+
+          # Image
+          {
+            mode = "n";
+            key = "<leader>i";
+            action = {
+              __raw = "function() Snacks.image.hover() end";
+            };
+            options.desc = "Preview image under cursor";
           }
 
           # Notifier
