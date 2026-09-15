@@ -26,6 +26,7 @@
       self.modules.homeManager.nixvimPluginColorizer
       self.modules.homeManager.nixvimPluginTodocomments
       self.modules.homeManager.nixvimPluginLualine
+      self.modules.homeManager.nixvimPluginTypstpreview
     ];
 
     programs.nixvim = {
@@ -348,6 +349,9 @@
         servers = {
           nil_ls.enable = true;
           lua_ls.enable = true;
+
+          tinymist.enable = true;
+
           # pyright.enable = true;
           # clangd.enable = true;
         };
@@ -404,27 +408,25 @@
 
   flake.modules.homeManager.nixvimCompletions = {
     programs.nixvim = {
-      plugins.cmp = {
+      plugins.blink-cmp = {
         enable = true;
 
-        settings = {
-          sources = [
-            { name = "nvim_lsp"; }
-            { name = "luasnip"; }
-            { name = "path"; }
-            { name = "buffer"; }
+        settings.keymap = {
+          preset = "default";
+          "<CR>" = [
+            "accept"
+            "fallback"
           ];
-
-          mapping = {
-            "<CR>" = "cmp.mapping.confirm({ select = true })";
-            "<Tab>" = "cmp.mapping.select_next_item()";
-            "<S-Tab>" = "cmp.mapping.select_prev_item()";
-          };
+          "<Tab>" = [
+            "select_next"
+            "fallback"
+          ];
+          "<S-Tab>" = [
+            "select_prev"
+            "fallback"
+          ];
         };
       };
-
-      plugins.luasnip.enable = true;
-      plugins.lspkind.enable = true; # Completion icons
     };
   };
 
@@ -458,6 +460,7 @@
           ensureInstalled = [
             "nix"
             "lua"
+            "typst"
           ];
         };
       };
@@ -840,6 +843,14 @@
           tabline = { };
           extensions = [ ];
         };
+      };
+    };
+  };
+
+  flake.modules.homeManager.nixvimPluginTypstpreview = { lib, ... }: {
+    programs.nixvim = {
+      plugins.typst-preview = {
+        enable = true;
       };
     };
   };
