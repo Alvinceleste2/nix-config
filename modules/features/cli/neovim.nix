@@ -382,9 +382,10 @@
         extraPackages = with pkgs; [
           nixfmt
           stylua
+          typstyle
+
           # clang-format
           # black
-          # typstyle
           # prettier
         ];
 
@@ -400,6 +401,7 @@
             formatters_by_ft = {
               nix = [ "nixfmt" ];
               lua = [ "stylua" ];
+              typst = [ "typstyle" ];
             };
           };
         };
