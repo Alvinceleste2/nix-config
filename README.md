@@ -88,6 +88,12 @@ Reboot
 reboot
 ```
 
+After reboot and login, I suggest to execute
+
+```bash
+sudo chown -R 1000:1000 /etc/nixos
+```
+
 ## Secure Boot Setup
 
 Enable lanzaboote module inside the host config
