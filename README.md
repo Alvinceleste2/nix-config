@@ -53,8 +53,6 @@ ssh -A root@$NIXOS_HOST
 chown -R 1000:100 /mnt/home/alvinceleste
 chmod 700 /mnt/home/alvinceleste/.ssh
 chmod 600 /mnt/home/alvinceleste/.ssh/*
-
-chown -R 1000:100 /mnt/etc/nixos
 ```
 
 If the host is new, retrieve the new nixos hardware-configuration file and paste it into the appropiate place
@@ -81,7 +79,6 @@ nixos-enter --root /mnt -- nix-shell -p sbctl --run "sbctl create-keys"
 Unmount the filesystems
 
 ```bash
-umount "/mnt/boot/efis/*"
 umount -Rl "/mnt"
 ```
 
