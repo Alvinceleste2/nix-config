@@ -12,6 +12,9 @@
         typst
 
         sage
+
+        lean4
+        # leanPackages.mathlib
       ];
     };
 }
