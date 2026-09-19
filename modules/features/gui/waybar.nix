@@ -383,9 +383,9 @@
             device = "intel_backlight";
             format = "{icon} {percent}%";
             format-icons = [
-              "󰃞"
-              "󰃟"
-              "󰃠"
+              "󰃞 "
+              "󰃟 "
+              "󰃠 "
             ];
           };
 
@@ -411,7 +411,7 @@
         settings.mainBar = {
           pulseaudio = {
             format = "{icon} {volume}%";
-            format-muted = "󰖁  Muted";
+            format-muted = "󰖁 Muted";
             format-icons = {
               headphone = " ";
               hands-free = " ";
@@ -420,8 +420,8 @@
               portable = " ";
               car = " ";
               default = [
-                ""
-                ""
+                " "
+                " "
                 " "
               ];
             };
