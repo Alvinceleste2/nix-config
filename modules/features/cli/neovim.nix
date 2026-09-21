@@ -27,6 +27,7 @@
       self.modules.homeManager.nixvimPluginTodocomments
       self.modules.homeManager.nixvimPluginLualine
       self.modules.homeManager.nixvimPluginTypstpreview
+      self.modules.homeManager.nixvimPluginMarkdownpreview
     ];
 
     programs.nixvim = {
@@ -349,8 +350,8 @@
         servers = {
           nil_ls.enable = true;
           lua_ls.enable = true;
-
           tinymist.enable = true;
+          marksman.enable = true;
 
           # pyright.enable = true;
           # clangd.enable = true;
@@ -383,10 +384,10 @@
           nixfmt
           stylua
           typstyle
+          prettier
 
           # clang-format
           # black
-          # prettier
         ];
 
         plugins.conform-nvim = {
@@ -402,6 +403,7 @@
               nix = [ "nixfmt" ];
               lua = [ "stylua" ];
               typst = [ "typstyle" ];
+              markdown = [ "prettier" ];
             };
           };
         };
@@ -852,6 +854,14 @@
   flake.modules.homeManager.nixvimPluginTypstpreview = { lib, ... }: {
     programs.nixvim = {
       plugins.typst-preview = {
+        enable = true;
+      };
+    };
+  };
+
+  flake.modules.homeManager.nixvimPluginMarkdownpreview = { lib, ... }: {
+    programs.nixvim = {
+      plugins.markdown-preview = {
         enable = true;
       };
     };
