@@ -6,7 +6,7 @@
       settings = {
         user = {
           name = "Álvaro Grande";
-          email = "github.hvgyj15x@alvinceleste.eu";
+          email = "git.b5pphvyu@alvinceleste.eu";
         };
 
         alias.st = "status";
