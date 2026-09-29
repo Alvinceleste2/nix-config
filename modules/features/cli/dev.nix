@@ -15,6 +15,8 @@
 
         lean4
         # leanPackages.mathlib
+
+        opencode
       ];
     };
 }
