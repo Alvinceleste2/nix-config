@@ -352,9 +352,9 @@
           lua_ls.enable = true;
           tinymist.enable = true;
           marksman.enable = true;
+          clangd.enable = true;
 
           # pyright.enable = true;
-          # clangd.enable = true;
         };
 
         keymaps.lspBuf = {
@@ -385,8 +385,8 @@
           stylua
           typstyle
           prettier
+          clang-tools
 
-          # clang-format
           # black
         ];
 
@@ -404,6 +404,7 @@
               lua = [ "stylua" ];
               typst = [ "typstyle" ];
               markdown = [ "prettier" ];
+              c = [ "clang-format" ];
             };
           };
         };
