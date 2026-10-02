@@ -12,6 +12,7 @@
 
       self.modules.nixos.dev
       self.modules.nixos.virtualization
+      self.modules.nixos.tailscale
     ];
 
     networking.hostName = "laptop";
