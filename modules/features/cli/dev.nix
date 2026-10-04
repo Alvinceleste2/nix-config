@@ -13,8 +13,9 @@
 
         sage
 
-        lean4
+        # lean
         # leanPackages.mathlib
+        elan
 
         opencode
       ];
