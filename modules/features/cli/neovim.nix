@@ -127,7 +127,7 @@
       keymaps = [
         {
           mode = "n";
-          key = "<leader>st";
+          key = "<leader>sñ";
           action = "<cmd>set spell!<CR>";
           options = {
             desc = "Toggle Spellcheck";
