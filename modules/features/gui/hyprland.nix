@@ -164,6 +164,10 @@
           "XCURSOR_SIZE,18"
         ];
 
+        cursor = {
+          no_hardware_cursors = true;
+        };
+
         exec-once = [
           "hyprctl setcursor Bibata-Modern-Ice 18"
         ];
