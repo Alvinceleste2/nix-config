@@ -7,6 +7,7 @@
 
       self.modules.nixos.hyprlandDesktop
 
+      self.modules.nixos.dev
       self.modules.nixos.ssh
       self.modules.nixos.virtualization
 
