@@ -18,6 +18,8 @@
         elan
 
         opencode
+
+        nodejs_26
       ];
     };
 }
