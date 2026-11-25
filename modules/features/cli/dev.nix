@@ -1,7 +1,12 @@
+{ self, ... }:
 {
   flake.modules.nixos.dev =
     { pkgs, ... }:
     {
+      imports = [
+        self.modules.nixos.unstable
+      ];
+
       environment.systemPackages = with pkgs; [
         gcc
         gnumake
@@ -9,7 +14,7 @@
 
         python3
 
-        typst
+        unstable.typst
 
         sage
 

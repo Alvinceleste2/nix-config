@@ -4,7 +4,7 @@
   inputs = {
     # Official NixOS Package Sources
     nixpkgs.url = "github:nixos/nixpkgs/nixos-26.05";
-    # nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
+    nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
 
     # Secrets management
     sops-nix = {
