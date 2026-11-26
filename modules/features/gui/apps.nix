@@ -7,7 +7,7 @@
         gnome-calculator
 
         spotify
-        signal-desktop
+        unstable.signal-desktop
         discord
         pencil
         libreoffice
